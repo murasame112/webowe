@@ -1,0 +1,11 @@
+u siebie zainstalowac ng globalnie (oparte o node'a)
+npm i @angular/cli -g  (flaga -g zeby globalnie)
+ng new [nazwa]
+ng serve - wersja developerska
+ng build - do zrobienia paczki produkcyjnej (folder dist)
+npx ng test - puszcza wszystkie testy w projekcie
+npx ng generate component [nazwa] (moge napisac tez npx ng g c [nazwa]) - generowanie komponentu
+
+
+
+jak bedzie ostrzezenie to cos tam z set external script policy
