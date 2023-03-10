@@ -1,3 +1,27 @@
-<h1>hello world</h1>
-<h1>User List</h1>
-<app-list-user></app-list-user>
+<div class="contentBox">
+  <app-small-card
+    [title]="smallCards[0].title"
+    [color]="smallCards[0].color"
+    [value]="smallCards[0].value"
+    [iconUrl]="smallCards[0].iconUrl">
+  </app-small-card>
+  <app-small-card
+    [title]="smallCards[1].title"
+    [color]="smallCards[1].color"
+    [value]="smallCards[1].value"
+    [iconUrl]="smallCards[1].iconUrl">
+  </app-small-card>
+</div>
+<div class="contentBox">
+  <app-medium-card
+    [title]="mediumCards[0].title"
+    [precentType]="mediumCards[0].precentType"
+    [value]="mediumCards[0].value"
+    [imageUrl]="mediumCards[0].imageUrl"></app-medium-card>
+  <app-medium-card
+    [title]="mediumCards[1].title"
+    [precentType]="mediumCards[1].precentType"
+    [value]="mediumCards[1].value"
+    [imageUrl]="mediumCards[1].imageUrl">
+  </app-medium-card>
+</div>

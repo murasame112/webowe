@@ -1,0 +1,28 @@
+.content{
+
+  box-shadow: 0 0 5px #cccccc;
+  width: 250px;
+  height:70px;
+  display:flex;
+  flex-direction: row;
+  margin-right:10px;
+}
+
+.imageBox{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 3px;
+  margin-right:20px;
+}
+
+.valueBox{
+  display:flex;
+  flex-direction: column;
+  width:100%;
+  justify-content: center;
+}
+
+.valueBox p{
+  margin:0;
+}
