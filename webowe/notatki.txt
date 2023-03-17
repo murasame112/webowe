@@ -5,7 +5,6 @@ ng serve - wersja developerska
 ng build - do zrobienia paczki produkcyjnej (folder dist)
 npx ng test - puszcza wszystkie testy w projekcie
 npx ng generate component [nazwa] (moge napisac tez npx ng g c [nazwa]) - generowanie komponentu
-
-
+npx ng generate service - generuje serwis
 
 jak bedzie ostrzezenie to cos tam z set external script policy

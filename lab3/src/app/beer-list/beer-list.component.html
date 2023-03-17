@@ -1,0 +1,9 @@
+<h3>List:</h3>
+<ul>
+  <li
+    *ngFor="let beer of list"
+    (click)="onBeerSelect(beer)">
+    {{beer.name}}
+  </li>
+</ul>
+
