@@ -8,8 +8,14 @@ import {CSS} from 'src/models/css.model';
 })
 export class AppComponent {
   title = 'lab4';
+  css: CSS = {
+    color: undefined,
+    backgroundColor: undefined,
+    border: undefined,
+    fontSize: undefined
+  };
 
   onGenerateCSS(css: CSS){
-    console.log(css.color);
+      this.css = css;
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import {CSS} from 'src/models/css.model';
 
 @Component({
   selector: 'app-generator',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./generator.component.scss']
 })
 export class GeneratorComponent {
-
+  @Input() css: CSS = {
+    color: undefined,
+    backgroundColor: undefined,
+    border: undefined,
+    fontSize: undefined
+  };
 }

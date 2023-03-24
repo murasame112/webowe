@@ -1,4 +1,3 @@
 <app-inputs (myStyles)="onGenerateCSS($event)"></app-inputs>
-<div></div>
-<app-examples></app-examples>
-<app-generator></app-generator>
+<app-examples [css]="css"></app-examples>
+<app-generator [css]="css"></app-generator>
