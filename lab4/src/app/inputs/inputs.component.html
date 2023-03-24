@@ -1,0 +1,8 @@
+<h3>Personalize your CSS:</h3>
+<p>Color: <input type="text" [(ngModel)]="css.color"></p>
+<p>Background color: <input type="text" [(ngModel)]="css.backgroundColor"></p>
+<p>Border: <input type="text" [(ngModel)]="css.border"></p>
+<p>Font size (px): <input type="text" [(ngModel)]="css.fontSize"></p>
+<br>
+<p><button (click)="onGenerateCSS(css) ">Generate!</button></p>
+<hr>
