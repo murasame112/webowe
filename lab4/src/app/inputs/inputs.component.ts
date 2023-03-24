@@ -23,25 +23,3 @@ export class InputsComponent{
   }
 }
 
-
-
-
-// protected selectedBeer:any;
-// protected beerList: any;
-
-// onBeerSelect(beer:any){
-//   this.selectedBeer = beer;
-// }
-
-// constructor(private beerApi: BeerApiService) {}
-// ngOnInit(){
-
-//   this.beerApi.getBeers().subscribe(data => this.beerList = data);
-
-//   // subscribe to odpowiednik .then, tylko ze dla observable
-// }
-
-// export class BeerDetailsComponent {
-//   @Input() beer: any; // to any ma byc zastepione modelem
-
-// }
