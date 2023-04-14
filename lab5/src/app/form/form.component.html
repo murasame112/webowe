@@ -1,6 +1,13 @@
-<!-- <div [formGroup]="user">
-  <input [formControl]="user.get('login')">
-    <input formControlName="imie" placeholder="imie">
-    <input formControlName="nazwisko" placeholder="nazwisko">
+<div [formGroup]="user">
+
+  <input formControlName="name" placeholder="name">
+  <input formControlName="surname" placeholder="surname">
+  <div formGroupName="adress" placeholder="">
+    <input formControlName="city" placeholder="city">
+    <input formControlName="street" placeholder="street">
+    <input formControlName="postalCode" placeholder="postalCode">
+    <input formControlName="number" placeholder="number">
+  </div>
 </div>
-<button (click)="onCheck()">Check</button> -->
+<button (click)="onCheck()">Check</button>
+

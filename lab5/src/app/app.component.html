@@ -1,7 +1,2 @@
-<div [formGroup]="user">
-
-    <input formControlName="name" placeholder="name">
-    <input formControlName="surname" placeholder="surname">
-</div>
-<button (click)="onCheck()">Check</button>
-
+<app-form (myUser)="OnCheck()"></app-form>
+<app-summary [user]="user"></app-summary>

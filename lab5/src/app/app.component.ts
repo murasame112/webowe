@@ -9,33 +9,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy{
+export class AppComponent{
   title = 'lab5';
+  user = {
+    name: undefined,
+    surname: undefined,
+    adress: undefined
+  };
 
-  name!: FormControl<string | null>
-  user!: FormGroup<User>
-  subValue!: Subscription
-
-
-  constructor(private readonly fb: FormBuilder) {}
-  ngOnInit(): void {
-    this.user = this.fb.nonNullable.group({
-      name: new FormControl(),
-      surname: new FormControl(),
-
-    })
-
-    this.subValue = this.user.valueChanges.subscribe(data => console.log(data))
-
-
-  }
-  onCheck() {
-
-    //console.log(this.user.valueChanges);
-    console.log(this.user.getRawValue());
-  }
-  ngOnDestroy(): void {
-    this.subValue!.unsubscribe();
+  OnCheck(){
+      this.user;
   }
 
 
