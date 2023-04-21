@@ -9,6 +9,10 @@ import { NavComponent } from './nav/nav.component';
 import { SummaryComponent } from './summary/summary.component';
 import { FunctionalityListComponent } from './functionality-list/functionality-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { NewProjectComponent } from './new-project/new-project.component';
+import { NewFunctionalityComponent } from './new-functionality/new-functionality.component';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NavComponent,
     SummaryComponent,
     FunctionalityListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TaskListComponent,
+    NewProjectComponent,
+    NewFunctionalityComponent,
+    NewTaskComponent
   ],
   imports: [
     BrowserModule,

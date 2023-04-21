@@ -114,5 +114,13 @@ uzytkownicy
 
 app - aktualny projekt, jego opis
 route - lista projektow
+  - add new
 route - szczegoly projektu
 route - lista funkcjonalnosci
+  - add new
+  - lista taskow
+    -add new
+
+
+
+moge dodac nowy modul, zeby nie robic np projects/new_project tylko samo new_project jako path
