@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FunctionalityDetailsComponent } from './functionality-details/functionality-details.component';
 import { FunctionalityListComponent } from './functionality-list/functionality-list.component';
 import { NewFunctionalityComponent } from './new-functionality/new-functionality.component';
 import { NewProjectComponent } from './new-project/new-project.component';
@@ -8,17 +9,20 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import {ProjectListComponent} from './project-list/project-list.component';
 import { SummaryComponent } from './summary/summary.component';
+import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TaskListComponent } from './task-list/task-list.component';
 
 const routes: Routes = [
   {path: '', component: SummaryComponent},
   {path: 'projects', component: ProjectListComponent},
-  {path: 'details', component: ProjectDetailsComponent},
+    {path: 'projects/new', component: NewProjectComponent},
+    {path: 'projects/details', component: ProjectDetailsComponent},
   {path: 'functionalities', component: FunctionalityListComponent},
+    {path: 'functionalities/new', component: NewFunctionalityComponent},
+    {path: 'functionalities/details', component: FunctionalityDetailsComponent},
   {path: 'tasks', component: TaskListComponent},
-  {path: 'projects/new_project', component: NewProjectComponent},
-  {path: 'functionalities/new_functionality', component: NewFunctionalityComponent},
-  {path: 'tasks/new_task', component: NewTaskComponent},
+    {path: 'tasks/new', component: NewTaskComponent},
+    {path: 'tasks/details', component: TaskDetailsComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
