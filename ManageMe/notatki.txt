@@ -1,0 +1,118 @@
+Specyfikacja funkcjonalna ManageMe
+
+ManageMe to aplikacja do zarządzania projektami. Projekt reprezentowany jest przez listę funkcjonalności do zrealizowania. Do każdej z funkcjonalności można przypisać jedno lub więcej zadań.
+
+Specyfikacja funkcjonalna
+
+1. CRUD + lista projektów.
+
+  a. W aplikacji możliwe jest utworzenie wielu projektów. Podczas korzystania z aplikacji powinna być możliwość wybrania „aktualnego” projektu na którym pracujemy w danym momencie. Zmiana projektu możliwa jest tylko w jednym miejscu, cała reszta aplikacji pracuje na bieżącym projekcie (czyli np. na liście funkcjonalności widzę tylko funkcjonalności z bieżącego projektu)
+
+  b. Widoki z formularzami do realizacji CRUD
+
+  c. Widok listy projektów: przycisk „nowy projekt” oraz lista projektów (nazwa oraz nawigacja - edytuj/usuń/szczegóły)
+
+  d. Widok szczegółów projektu - czas rozpoczęcia, czas trwania, przewidywany czas trwania (z funkcjonalności), liczba wykonanych roboczogodzin (z zadań), zaangażowane osoby (osoby przypisane do zadań i funkcjonalności)
+
+2. CRUD + lista funkcjonalności w konkretnym projekcie. Każda funkcjonalność przypisana jest do jednego projektu.
+
+  a. Widoki z formularzami do realizacji CRUD
+
+  b. Widok listy funkcjonalności - z podziałem na aktualnie wykonywane, czekające na wykonanie i zamknięte (lub jedna lista z możliwością filtrowania). Lista - nazwa funkcjonalności + przyciski
+
+  c. Widok szczegółów funkcjonalności - dane funkcjonalności + aktualny stan. Stan funkcjonalności to data dodania oraz startu, zaangażowane osoby, roboczogodziny, powiązane zadania i ich stany
+
+  d. Funkcjonalność posiada stan. Stan nowej funkcjonalności to „todo”, po zaczęciu któregokolwiek przypisanego zadania stan zmienia się na „doing”. Możliwe jest ręczne oznaczenie funkcjonalności jako wykonana - stan „done”
+
+3. CRUD + lista zadań w konkretnym projekcie. Każde zadanie przypisane jest do konkretnej funkcjonalności.
+
+  a. Widoki z formularzami do realizacji CRUD
+
+  b. Widok szczegółów zadania - dane zadania oraz nazwa projektu, przypisana funkcjonalność, data startu, zrealizowane roboczogodziny, przypisana osoba
+
+  c. Widok tablicy kanban z zadaniami (kolumny todo, doing, done)
+
+4. CRUD + lista użytkowników. Użytkownik zakłada konto samodzielnie (domyślnie jest developerem), zmiany uprawnień może dokonać jedynie super admin. Użytkownik sam sobie nadaje hasło, zmiana hasła jest możliwa z użyciem pytania pomocniczego.
+
+  a. Widoki z formularzami do realizacji CRUD
+
+  b. Widok szczegółów użytkownika - dane użytkownika, aktualnie przypisane zadania, zadania zrealizowane
+
+  c. W aplikacji powinno istnieć domyślnie jedno konto admina.
+
+d. Uprawnienia ról:
+
+  i. Admin - zarządza użytkownikami (zakładanie, usuwanie, edycja, zmiana uprawnień)
+
+  ii. Devops - zarządza projektami oraz funkcjonalnościami i zadaniami w projektach. Może dodawać/usuwać developerów projektu.
+
+  iii. Developer - może tworzyć zadania, może zarządzać swoimi zadaniami, może być przypisany do zadania.
+
+Modele:
+
+Projekt
+
+  · Nazwa
+
+  · Opis
+
+Funkcjonalność
+
+  · Nazwa
+
+  · Opis
+
+  · Priorytet
+
+  · Projekt
+
+  · Właściciel
+
+  · Stan (todo, doing, done)
+
+Zadanie
+
+  · Nazwa
+
+  · Opis
+
+  · Priorytet
+
+  · Funkcjonalność do której przynależy zadanie
+
+  · Przewidywany czas wykonania
+
+  · Stan (todo, doing, done). Zadanie ze stanem doing musi posiadać czas startu oraz przypisanego użytkownika. Zadanie ze stanem done posiada przypisanego użytkownika oraz datę zakończenia
+
+  · Data dodania
+
+  · Data startu (stan zmieniony na doing)
+
+  · Data zakończenia (stan zmieniony na done)
+
+  · Użytkownik odpowiedzialny za zadanie (devops lub developer)
+
+Użytkownik
+
+  · Login
+
+  · Hasło
+
+  · Imię
+
+  · Nazwisko
+
+  · Uprawnienia (admin, devops, developer)
+
+
+
+
+///////////////////
+
+projekty -> func -> zadania
+uzytkownicy
+
+app - aktualny projekt, jego opis
+route - lista projektow
+route - szczegoly projektu
+route - lista funkcjonalnosci
