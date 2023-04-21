@@ -7,6 +7,8 @@ import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { NavComponent } from './nav/nav.component';
 import { SummaryComponent } from './summary/summary.component';
+import { FunctionalityListComponent } from './functionality-list/functionality-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { SummaryComponent } from './summary/summary.component';
     ProjectListComponent,
     ProjectDetailsComponent,
     NavComponent,
-    SummaryComponent
+    SummaryComponent,
+    FunctionalityListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
