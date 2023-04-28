@@ -16,6 +16,5 @@ export class SummaryComponent implements OnInit {
     if(typeof projects[0] == 'string'){
       this.xd = projects[0];
     }
-    console.log(projects);
   }
 }
