@@ -9,17 +9,17 @@ import {Project} from 'src/models/project.model';
 })
 export class SummaryComponent implements OnInit {
   constructor(private projectService: ProjectService) {}
-  @Input() xd:string = '';
+  @Input() prj:Project|undefined = {
+    name: undefined,
+    description: undefined,
+    active: undefined,
+  };
 
 
   ngOnInit(): void {    
 
     this.projectService.createDefault();
-    // this.projectService.saveProject('jakis nowy?');
-    // this.projectService.saveProject('jeszcze nowszy :D');
-    const projects = this.projectService.getProjects();
-    if(typeof projects[0] == 'string'){
-      this.xd = projects[0];
-    }
+    this.prj = this.projectService.getActiveProject();
+    
   }
 }

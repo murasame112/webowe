@@ -8,6 +8,7 @@ export class ProjectService {
 
   constructor() { }
 
+  // saves project to local storage
   public saveProject(project: Project) {
 
     //zrzucanie w json
@@ -39,13 +40,14 @@ export class ProjectService {
     localStorage.setItem(key, projectJson);
   }
 
-  
+  // returns array of all projects
   getProjects(){
     if(localStorage.length == 0){
+      // TODO: przemyslec jak to rozwiazac inaczej niz return false
         //return false;
     }  
     
-    const projects = [];
+    const projects: Array<Project> = [];
     
     let storage: any = {},
         keys = Object.keys(localStorage),
@@ -56,13 +58,25 @@ export class ProjectService {
     }
     for (const [key, value] of Object.entries(storage)) {
       if(key.startsWith('p')){
-        projects.push(value);
+        // TODO: wymyslic jak sie pozbyc ponizszego if'a
+        if(typeof value == 'string'){
+          const prj: Project = JSON.parse(value);
+          projects.push(prj);
+        }
       }
       
     }
     return projects;
   }
+
+  // returns project marked as active
+  getActiveProject(){
+    const projects:Array<Project> = this.getProjects();
+    let found:Project|undefined = projects.find(element => element.active == true);
+    return found;
+  }
   
+  // creates project (just like constructor)
   createProject(name: string, description: string, active: boolean){
     let project: Project = {
       name: undefined,
@@ -77,6 +91,7 @@ export class ProjectService {
 
   }
 
+  // creates few default projects for testing
   createDefault(){
     let p1 = this.createProject('pierwszy projekt', 'opis pierwszego projektu', false);
     let p2 = this.createProject('drugi projekt', 'opis drugiego projektu', true);
