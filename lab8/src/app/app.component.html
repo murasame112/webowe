@@ -1,0 +1,18 @@
+<h2>Operatory </h2>
+
+<h3>Wyszukiwarka</h3>
+<!-- <div>Szukaj: <input #search type="text" (input)="onSearchInput(search.value)"></div> -->
+<div>głos 1: <input #vote1 type="text"></div>
+<div>głos 2: <input #vote2 type="text"></div>
+<div>głos 3: <input #vote3 type="text"></div>
+
+<div>Coord X: {{ userSearchX$ | async }} </div>
+<div>Coord Y: {{ userSearchY$ | async }} </div>
+<div>Int X: {{ searchXInterval$ | async }}</div>
+<div>Int Y: {{ searchYInterval$ | async }}</div>
+<div>user didnt move for 2s X: {{ searchXNotMoved$ | async }}</div>
+<div>user didnt move for 2s Y: {{ searchYNotMoved$ | async }}</div>
+<hr>
+<div>osoba1: {{per1$ | async}}</div>
+<div>osoba2: {{per2$ | async}}</div>
+<div>osoba3: {{per3$ | async}}</div>
