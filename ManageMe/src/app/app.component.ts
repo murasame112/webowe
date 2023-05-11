@@ -14,9 +14,9 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     localStorage.clear();
-    this.saveData('p1', 'costam projekt 1');
-    this.saveData('p2', '2 projekt');
-    this.saveData('f1', 'to juz funk');
+    // this.saveData('p1', 'costam projekt 1');
+    // this.saveData('p2', '2 projekt');
+    // this.saveData('f1', 'to juz funk');
   }
 
   
