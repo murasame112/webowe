@@ -17,9 +17,6 @@ export class SummaryComponent implements OnInit {
 
 
   ngOnInit(): void {    
-
-    this.projectService.createDefault();
-    this.prj = this.projectService.getActiveProject();
-    
+    this.prj = this.projectService.getActiveProject();    
   }
 }
