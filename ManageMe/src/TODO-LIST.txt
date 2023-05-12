@@ -1,0 +1,10 @@
+List of files that contain "TODOs":
+
+project.service.ts
+new-project.component.ts
+
+
+
+
+
+to do to do, to do, to do to do to do to do to do: https://www.youtube.com/watch?v=lp6z3s1Gig0

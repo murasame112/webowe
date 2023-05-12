@@ -15,6 +15,7 @@ import { NewFunctionalityComponent } from './new-functionality/new-functionality
 import { NewTaskComponent } from './new-task/new-task.component';
 import { FunctionalityDetailsComponent } from './functionality-details/functionality-details.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
