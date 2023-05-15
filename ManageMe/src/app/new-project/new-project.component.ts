@@ -16,7 +16,6 @@ export class NewProjectComponent implements OnInit {
   constructor(private projectService: ProjectService, private readonly fb: FormBuilder) {}
   @Input() project:Project|undefined;
   new_project!: FormGroup<ProjectForm>;
-  subValue!: Subscription;
 
 
   
