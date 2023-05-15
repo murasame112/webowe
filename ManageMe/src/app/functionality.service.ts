@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Project } from 'src/models/project.model';
 import { Functionality } from 'src/models/functionality.model';
 import { Priority } from 'src/enums/priority.enum';
-import { User } from 'src/models/user.model';
 import { Status } from 'src/enums/status.enum';
 
 @Injectable({

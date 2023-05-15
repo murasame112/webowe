@@ -4,15 +4,16 @@ import {Status} from 'src/enums/status.enum';
 import {Priority} from 'src/enums/priority.enum';
 
 export type Task = {
+    key: string | undefined,
     name: string | undefined,
     description: string | undefined,
     priority: Priority | undefined,
-    functionality: Functionality | undefined,
+    functionalityKey: string | undefined,
     // Estimated execution time (in hours)
     exec_time: number | undefined,
     status: Status | undefined,
     added: Date | undefined,
     start: Date | undefined,
     finish: Date | undefined,
-    user: User | undefined,
+    userKey: string | undefined,
 }

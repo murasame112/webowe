@@ -8,6 +8,8 @@ export class ProjectService {
 
   constructor() { }
 
+  // TODO: Fajnie byłoby ugoólnić te serwisy chyba, żeby był jeden do obsługi tego - wtedy nie trzebaby robić funkcji saveProject, save Functionality, saveTask, save...
+
   // saves project to local storage
   public saveProject(project: Project) {
     let key = 'undefined_key';

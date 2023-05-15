@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Task } from 'src/models/task.model';
+import { Status } from 'src/enums/status.enum';
+import { Priority } from 'src/enums/priority.enum';
+
 
 @Injectable({
   providedIn: 'root'
@@ -6,9 +10,62 @@ import { Injectable } from '@angular/core';
 export class TaskService {
 
   constructor() { }
-
   
-  public saveTask(value: string) {
+  public saveTask(task: Task) {
+
+    let key = 'undefined_key';
+    if(typeof task.key == 'string'){
+      key = task.key;
+    }
+    let taskJson = JSON.stringify(task);
+    localStorage.setItem(key, taskJson);
+  }
+
+  // returns array of all functionalities
+  getTasks(){
+    if(localStorage.length == 0){
+      // TODO: przemyslec jak to rozwiazac inaczej niz return false
+        //return false;
+    }  
+    
+    const tasks: Array<Task> = [];
+    
+    let storage: any = {},
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while ( i-- ) {
+        storage[keys[i]] =  localStorage.getItem(keys[i]);
+    }
+    for (const [key, value] of Object.entries(storage)) {
+      if(key.startsWith('p')){
+        // TODO: wymyslic jak sie pozbyc ponizszego if'a
+        if(typeof value == 'string'){
+          const tsk: Task = JSON.parse(value);
+          tasks.push(tsk);
+        }
+      }
+      
+    }
+    return tasks;
+  }
+
+  // creates task (just like constructor)
+  createTask(name: string, description: string, priority: Priority, functionalityKey: string, exec_time: number, status: Status, added: Date, start: Date, finish: Date, userKey: string){
+    let task: Task = {
+      key: undefined,
+      name: undefined,
+      description: undefined,
+      priority: undefined, 
+      functionalityKey: undefined,
+      exec_time: undefined,
+      status: undefined,
+      added: undefined,
+      start: undefined,
+      finish: undefined,
+      userKey: undefined,
+    };
+    
     let key = 't';
     let highest = '';
     let highestId = 0;
@@ -33,30 +90,38 @@ export class TaskService {
     }
     highestId++;
     key += highestId;
-    localStorage.setItem(key, value);
+
+    task.key = key;
+    task.name = name;
+    task.description = description;
+    task.priority = priority;
+    task.functionalityKey = functionalityKey;
+    task.exec_time = exec_time;
+    task.status = status;
+    task.added = added;
+    task.start = start;
+    task.finish = finish;
+    task.userKey = userKey;
+
+    return task;
+
+  }
+
+  getTasksForFunctionality(functionalityKey: string){
+    //TODO: zbiera wszystkie taski dla danej funkcjonalnosci
+    // zwraca Array<Task> zapewne?
   }
 
   
-  getTasks(){
-    if(localStorage.length == 0){
-        //return false;
-    }  
+  // creates few default tasks for testing
+  createDefault(){
+    let t1 = this.createTask('task1', 't1 opis', Priority.high, 'f1', 6, Status.todo, new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u1');
+    this.saveTask(t1);
+    let t2 = this.createTask('task2', 't2 opis', Priority.low, 'f2', 2, Status.done, new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u2');
+    this.saveTask(t2);
+    let t3 = this.createTask('task3', 't3 opis', Priority.medium, 'f1', 4, Status.doing, new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u1');
+    this.saveTask(t3);
     
-    const tasks = [];
-    
-    let storage: any = {},
-        keys = Object.keys(localStorage),
-        i = keys.length;
-
-    while ( i-- ) {
-        storage[keys[i]] =  localStorage.getItem(keys[i]);
-    }
-    for (const [key, value] of Object.entries(storage)) {
-      if(key.startsWith('t')){
-        tasks.push(value);
-      }
-      
-    }
-    return tasks;
   }
+  
 }
