@@ -10,6 +10,7 @@ import {Project} from 'src/models/project.model';
 export class SummaryComponent implements OnInit {
   constructor(private projectService: ProjectService) {}
   @Input() prj:Project|undefined = {
+    key: undefined,
     name: undefined,
     description: undefined,
     active: undefined,

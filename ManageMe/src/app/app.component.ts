@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from 'src/app/project.service';
+import { FunctionalityService } from 'src/app/functionality.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { ProjectService } from 'src/app/project.service';
 })
 export class AppComponent implements OnInit{
   title = 'ManageMe';
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService, private functionalityService: FunctionalityService) {}
 
   public saveData(key: string, value: string) {
     localStorage.setItem(key, value);
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     localStorage.clear();
     this.projectService.createDefault();
+    this.functionalityService.createDefault();
   }
 
   

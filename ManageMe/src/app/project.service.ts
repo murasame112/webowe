@@ -10,32 +10,10 @@ export class ProjectService {
 
   // saves project to local storage
   public saveProject(project: Project) {
-
-    //zrzucanie w json
-    let key = 'p';
-    let highest = '';
-    let highestId = 0;
-    let newHighestId = 0;
-    let storage: any = {},
-        keys = Object.keys(localStorage),
-        i = keys.length;
-
-    while ( i-- ) {
-        storage[keys[i]] =  localStorage.getItem(keys[i]);
+    let key = 'undefined_key';
+    if(typeof project.key == 'string'){
+      key = project.key;
     }
-    for (const [key, value] of Object.entries(storage)) {
-      if(key.startsWith('p')){
-        highest = key;
-        highest = highest.slice(1);
-        newHighestId = parseInt(highest, 10);
-        if(newHighestId > highestId){
-          highestId = newHighestId;
-        }      
-      }
-      
-    }
-    highestId++;
-    key += highestId;
     let projectJson = JSON.stringify(project);
     localStorage.setItem(key, projectJson);
   }
@@ -79,10 +57,37 @@ export class ProjectService {
   // creates project (just like constructor)
   createProject(name: string, description: string, active: boolean){
     let project: Project = {
+      key: undefined,
       name: undefined,
       description: undefined,
       active: undefined,
     };
+    
+    let key = 'p';
+    let highest = '';
+    let highestId = 0;
+    let newHighestId = 0;
+    let storage: any = {},
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while ( i-- ) {
+        storage[keys[i]] =  localStorage.getItem(keys[i]);
+    }
+    for (const [key, value] of Object.entries(storage)) {
+      if(key.startsWith('p')){
+        highest = key;
+        highest = highest.slice(1);
+        newHighestId = parseInt(highest, 10);
+        if(newHighestId > highestId){
+          highestId = newHighestId;
+        }      
+      }
+      
+    }
+    highestId++;
+    key += highestId;
+    project.key = key;
     project.name = name;
     project.description = description;
     project.active = active;
@@ -94,14 +99,14 @@ export class ProjectService {
   // creates few default projects for testing
   createDefault(){
     let p1 = this.createProject('pierwszy projekt', 'opis pierwszego projektu', false);
-    let p2 = this.createProject('drugi projekt', 'opis drugiego projektu', true);
-    let p3 = this.createProject('trzeci projekcik', 'opis3', false);
-    let p4 = this.createProject('newNewNewNewNew project', 'awangardowy opis czwartego projektu', false);
-    
     this.saveProject(p1);
+    let p2 = this.createProject('drugi projekt', 'opis drugiego projektu', true);
     this.saveProject(p2);
+    let p3 = this.createProject('trzeci projekcik', 'opis3', false);
     this.saveProject(p3);
+    let p4 = this.createProject('newNewNewNewNew project', 'awangardowy opis czwartego projektu', false);
     this.saveProject(p4);
+    
   }
 
   
