@@ -16,13 +16,13 @@ export class NewFunctionalityComponent implements OnInit{
   @Input() functionality: Functionality | undefined;
   new_functionality!: FormGroup<FunctionalityForm>;
   //public priorities = Object.values(Priority);
-  priority = '';
-  priorities: string[] = [];
+  public priority = Priority;
+  public priorities: string[] = [];
   
 
   ngOnInit(): void {
-    this.priorities = Object.keys(this.priority);
-    console.log(this.priority);
+    this.priorities = Object.values(this.priority);
+    console.log(this.priorities);
     this.new_functionality = this.fb.nonNullable.group({
       
       name: '',

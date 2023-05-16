@@ -3,8 +3,8 @@
     <input formControlName="description" placeholder="description">
     <select formControlName="priority">
         <option value="" disabled>priority</option>
-        <option *ngFor="let priority of priorities">
-          {{ priority }}
+        <option *ngFor="let name of priorities; let i = index" [value]="name">
+          {{ priorities[i] }}
         </option>
     </select>
     <!-- select projekt (wyswietla tytul projektu) -->
