@@ -1,5 +1,5 @@
-export enum Priority {
-    high,// = 'high',
-    medium,// = 'medium',
-    low,// = 'low',
+export type Priority = {
+    high: string,
+    medium:string,
+    low:string,
 }

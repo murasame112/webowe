@@ -23,9 +23,9 @@ export class NewFunctionalityComponent implements OnInit{
   @Input() functionality: Functionality | undefined;
   new_functionality!: FormGroup<FunctionalityForm>;
   //public priorities = Object.values(Priority);
-  public priority = Priority;
+  //public priority = Priority;
   public status = Status;
-  public priorities: string[] = [];
+  public priorities: Priority[] = [];
   public projects: Project[] = [];
   public users: User[] = [];
   public statuses: string[] = [];
@@ -37,7 +37,8 @@ export class NewFunctionalityComponent implements OnInit{
     let u2 = {login: 'l1', password: 'p1', name: 'user 2', surname: 'u1', permissions: Permissions.developer};
     let u3 = {login: 'l1', password: 'p1', name: 'user 3', surname: 'u1', permissions: Permissions.developer};
 
-    this.priorities = Object.keys(this.priority).filter(x => isNaN(parseInt(x)));
+    //this.priorities = Object.keys(this.priority).filter(x => isNaN(parseInt(x)));
+    this.priorities = Object.entries(this.priority)
     this.projects = this.projectService.getProjects();
     this.users = [u1, u2, u3]; // TODO: tu powinno pobierac userów, ale jeszcze nie ma od tego metody
     this.statuses = Object.keys(this.status).filter(x => isNaN(parseInt(x)));
@@ -45,7 +46,7 @@ export class NewFunctionalityComponent implements OnInit{
 
       name: '',
       description: '',
-      priority: Priority.low,
+      priority: ,
       //priority: Priority.low as string,
       projectKey: '',
       ownerKey: '',
