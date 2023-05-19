@@ -37,20 +37,19 @@ export class NewFunctionalityComponent implements OnInit{
     let u2 = {login: 'l1', password: 'p1', name: 'user 2', surname: 'u1', permissions: Permissions.developer};
     let u3 = {login: 'l1', password: 'p1', name: 'user 3', surname: 'u1', permissions: Permissions.developer};
 
-    this.priorities = Object.values(this.priority);
+    this.priorities = Object.keys(this.priority).filter(x => isNaN(parseInt(x)));
     this.projects = this.projectService.getProjects();
     this.users = [u1, u2, u3]; // TODO: tu powinno pobierac userów, ale jeszcze nie ma od tego metody
-    this.statuses = Object.values(this.status);
+    this.statuses = Object.keys(this.status).filter(x => isNaN(parseInt(x)));
     this.new_functionality = this.fb.nonNullable.group({
 
       name: '',
       description: '',
-      priority: '',
+      priority: Priority.low,
       //priority: Priority.low as string,
       projectKey: '',
       ownerKey: '',
-      permissions: '',
-      status: '',
+      status: Status.doing,
 
     });
   }
@@ -58,9 +57,9 @@ export class NewFunctionalityComponent implements OnInit{
   onSave() {
     let fun = this.new_functionality.getRawValue();
     console.log(fun);
-    // this.project = this.projectService.createProject(prj.name, prj.description, false);
-    // this.projectService.saveProject(this.project);
-
+    this.functionality = this.functionalityService.createFunctionality(fun.name, fun.description, fun.priority, fun.projectKey, fun.ownerKey, fun.status);
+    this.functionalityService.saveFunctionality(this.functionality);
+    // TODO: tu enumy zapisywane jako string, a w np createDefault() jako number. trzeba to bedzie ogarnac zeby tez szlo number
     // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów
   }
 }
