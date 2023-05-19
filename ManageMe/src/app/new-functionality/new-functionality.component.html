@@ -7,7 +7,12 @@
           {{ priorities[i] }}
         </option>
     </select>
-    <!-- select projekt (wyswietla tytul projektu) -->
+    <select formControlName="project">
+      <option value="" disabled>project</option>
+      <option *ngFor="let name of projects; let i = index" [value]="name">
+        {{ projects[i].name }}
+      </option>
+    </select>
     <!-- select user -->
     <!-- select status -->
 </form>

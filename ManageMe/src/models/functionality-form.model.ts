@@ -5,4 +5,5 @@ export type FunctionalityForm = {
     name: FormControl<string>,
     description: FormControl<string>,
     priority: FormControl<string>,
+    projectKey: FormControl<string>,
 }
