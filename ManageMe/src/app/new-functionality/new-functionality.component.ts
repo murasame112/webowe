@@ -18,16 +18,16 @@ export class NewFunctionalityComponent implements OnInit{
   //public priorities = Object.values(Priority);
   public priority = Priority;
   public priorities: string[] = [];
-  
+
 
   ngOnInit(): void {
     this.priorities = Object.values(this.priority);
-    console.log(this.priorities);
     this.new_functionality = this.fb.nonNullable.group({
-      
+
       name: '',
       description: '',
-      priority: this.priorities,
+      priority: '',
+      //priority: Priority.low as string,
     });
   }
 
