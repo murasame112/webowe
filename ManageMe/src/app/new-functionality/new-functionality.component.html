@@ -13,7 +13,12 @@
         {{ projects[i].name }}
       </option>
     </select>
-    <!-- select user -->
+    <select formControlName="user">
+      <option value="" disabled>owner</option>
+      <option *ngFor="let name of users; let i = index" [value]="name">
+        {{ users[i].name }}
+      </option>
+    </select>
     <!-- select status -->
 </form>
 
