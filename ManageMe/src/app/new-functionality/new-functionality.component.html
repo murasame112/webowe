@@ -7,19 +7,24 @@
           {{ priorities[i] }}
         </option>
     </select>
-    <select formControlName="project">
+    <select formControlName="projectKey">
       <option value="" disabled>project</option>
       <option *ngFor="let name of projects; let i = index" [value]="name">
         {{ projects[i].name }}
       </option>
     </select>
-    <select formControlName="user">
+    <select formControlName="ownerKey">
       <option value="" disabled>owner</option>
       <option *ngFor="let name of users; let i = index" [value]="name">
         {{ users[i].name }}
       </option>
     </select>
-    <!-- select status -->
+    <select formControlName="status">
+      <option value="" disabled>status</option>
+      <option *ngFor="let name of statuses; let i = index" [value]="name">
+        {{ statuses[i] }}
+      </option>
+  </select>
 </form>
 
 <button (click)="onSave()">Save</button>
