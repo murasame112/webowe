@@ -57,9 +57,8 @@ export class NewFunctionalityComponent implements OnInit{
 
   onSave() {
     let fun = this.new_functionality.getRawValue();
-    console.log(fun.ownerKey);
-    //this.functionality = this.functionalityService.createFunctionality(fun.name, fun.description, fun.priority, fun.projectKey, fun.ownerKey, fun.status);
-    //this.functionalityService.saveFunctionality(this.functionality);
+    this.functionality = this.functionalityService.createFunctionality(fun.name, fun.description, fun.priority, fun.projectKey.key as string, fun.ownerKey.key as string, fun.status);
+    this.functionalityService.saveFunctionality(this.functionality);
     // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów
   }
 }
