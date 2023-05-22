@@ -59,7 +59,6 @@ export class NewFunctionalityComponent implements OnInit{
     console.log(fun);
     //this.functionality = this.functionalityService.createFunctionality(fun.name, fun.description, fun.priority, fun.projectKey, fun.ownerKey, fun.status);
     //this.functionalityService.saveFunctionality(this.functionality);
-    // TODO: tu enumy zapisywane jako string, a w np createDefault() jako number. trzeba to bedzie ogarnac zeby tez szlo number
     // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów
   }
 }
