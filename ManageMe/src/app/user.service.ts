@@ -1,0 +1,113 @@
+import { Injectable } from '@angular/core';
+import { User } from 'src/models/user.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  constructor() { }
+  public saveUser(user: User) {
+    let key = 'undefined_key';
+    if(typeof user.key == 'string'){
+      key = user.key;
+    }
+    let userJson = JSON.stringify(user);
+    localStorage.setItem(key, userJson);
+  }
+
+  // returns array of all users
+  getUsers(){
+    if(localStorage.length == 0){
+      // TODO: przemyslec jak to rozwiazac inaczej niz return false
+        //return false;
+    }  
+    
+    const users: Array<User> = [];
+    
+    let storage: any = {},
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while ( i-- ) {
+        storage[keys[i]] =  localStorage.getItem(keys[i]);
+    }
+    for (const [key, value] of Object.entries(storage)) {
+      if(key.startsWith('u')){
+        // TODO: wymyslic jak sie pozbyc ponizszego if'a
+        if(typeof value == 'string'){
+          const usr: User = JSON.parse(value);
+          users.push(usr);
+        }
+      }
+      
+    }
+    return users;
+  }
+
+
+  // returns user by key
+  getUsersByKey(key: string){
+    const users:Array<User> = this.getUsers();
+    let found:User|undefined = users.find(element => element.key == key);
+    return found as User;
+  }
+  
+  // creates user (just like constructor)
+  createUser(login: string, passowrd: string, name: string, surname: string, permissions: string){
+    let user: User = {
+      key: undefined,
+      login: undefined,
+      password: undefined,
+      name: undefined,
+      surname: undefined,
+      permissions: undefined,
+    };
+    
+    let key = 'u';
+    let highest = '';
+    let highestId = 0;
+    let newHighestId = 0;
+    let storage: any = {},
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while ( i-- ) {
+        storage[keys[i]] =  localStorage.getItem(keys[i]);
+    }
+    for (const [key, value] of Object.entries(storage)) {
+      if(key.startsWith('u')){
+        highest = key;
+        highest = highest.slice(1);
+        newHighestId = parseInt(highest, 10);
+        if(newHighestId > highestId){
+          highestId = newHighestId;
+        }      
+      }
+      
+    }
+    highestId++;
+    key += highestId;
+    user.key = key;
+    user.login = login;
+    user.password = passowrd;
+    user.name = name;
+    user.surname = surname;
+    user.permissions = permissions;
+
+    return user;
+
+  }
+
+  // creates few default projects for testing
+  createDefault(){
+    let u1 = this.createUser('l1', 'p1', 'user 1','u1', 'developer');
+    this.saveUser(u1);
+    let u2 = this.createUser('l2', 'p2', 'user 2', 'u2', 'developer');
+    this.saveUser(u2);
+    let u3 = this.createUser('l3', 'p3', 'user 3', 'u3', 'developer');
+    this.saveUser(u3);
+  
+    
+  }
+}

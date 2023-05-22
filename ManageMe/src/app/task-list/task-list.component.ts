@@ -3,6 +3,8 @@ import { TaskService } from 'src/app/task.service';
 import { Functionality} from 'src/models/functionality.model';
 import { Task } from 'src/models/task.model';
 import { FunctionalityService } from '../functionality.service';
+import { UserService } from '../user.service';
+import { User } from 'src/models/user.model';
 
 @Component({
   selector: 'app-task-list',
@@ -10,7 +12,7 @@ import { FunctionalityService } from '../functionality.service';
   styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent implements OnInit{
-  constructor(private functionalityService: FunctionalityService, private taskService: TaskService) {}
+  constructor(private functionalityService: FunctionalityService, private taskService: TaskService, private userService: UserService) {}
   @Input() tasks:Array<Task> = [];
   @Input() tasksUndef:Array<Task> | undefined;
   @Input() functionalityNames: string[] = [];
@@ -27,10 +29,10 @@ export class TaskListComponent implements OnInit{
         this.functionalityNames.push(fun.name as string);
     });
 
-    // this.tasks.forEach((element) =>{
-    //   let own = this.userService.getUsersByKey(element.ownerKey as string);
-    //   this.ownerNames.push(own.name as string);
-    // });
+    this.tasks.forEach((element) =>{
+      let own = this.userService.getUsersByKey(element.ownerKey as string);
+      this.ownerNames.push(own.name as string);
+    });
     
     // TODO: dodac jakies sortowanie i filtrowanie
 

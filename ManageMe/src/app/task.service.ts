@@ -51,7 +51,7 @@ export class TaskService {
   }
 
   // creates task (just like constructor)
-  createTask(name: string, description: string, priority: string, functionalityKey: string, exec_time: number, status: string, userKey: string, added: Date, start?: Date, finish?: Date){
+  createTask(name: string, description: string, priority: string, functionalityKey: string, exec_time: number, status: string, ownerKey: string, added: Date, start?: Date, finish?: Date){
     let task: Task = {
       key: undefined,
       name: undefined,
@@ -60,7 +60,7 @@ export class TaskService {
       functionalityKey: undefined,
       exec_time: undefined,
       status: undefined,
-      userKey: undefined,
+      ownerKey: undefined,
       added: undefined,
       start: undefined,
       finish: undefined,
@@ -101,7 +101,7 @@ export class TaskService {
     task.added = added;
     task.start = start;
     task.finish = finish;
-    task.userKey = userKey;
+    task.ownerKey = ownerKey;
     return task;
 
   }
@@ -116,9 +116,9 @@ export class TaskService {
   createDefault(){
     let t1 = this.createTask('task1', 't1 opis', 'high', 'f1', 6, 'todo', 'u1', new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'));
     this.saveTask(t1);
-    let t2 = this.createTask('task2', 't2 opis','low', 'f2', 2, 'done', 'u1', new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'));
+    let t2 = this.createTask('task2', 't2 opis','low', 'f2', 2, 'done', 'u2', new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'));
     this.saveTask(t2);
-    let t3 = this.createTask('task3', 't3 opis', 'medium', 'f1', 4, 'doing', 'u1', new Date('November 9, 2000'), undefined, undefined);
+    let t3 = this.createTask('task3', 't3 opis', 'medium', 'f1', 4, 'doing', 'u3', new Date('November 9, 2000'), undefined, undefined);
     this.saveTask(t3);
     
   }
