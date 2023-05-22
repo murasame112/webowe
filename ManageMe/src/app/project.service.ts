@@ -55,6 +55,13 @@ export class ProjectService {
     let found:Project|undefined = projects.find(element => element.active == true);
     return found;
   }
+
+  // returns project by key
+  getProjectByKey(key: string){
+    const projects:Array<Project> = this.getProjects();
+    let found:Project|undefined = projects.find(element => element.key == key);
+    return found as Project;
+  }
   
   // creates project (just like constructor)
   createProject(name: string, description: string, active: boolean){
