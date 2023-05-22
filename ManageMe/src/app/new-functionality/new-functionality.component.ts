@@ -5,7 +5,6 @@ import { FunctionalityForm } from 'src/models/functionality-form.model';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { priority } from 'src/enums/priority.enum';
-import { Permissions } from 'src/enums/permissions.enum';
 import { status } from 'src/enums/status.enum';
 import { Project } from 'src/models/project.model';
 import { User } from 'src/models/user.model';
@@ -30,9 +29,9 @@ export class NewFunctionalityComponent implements OnInit{
 
   ngOnInit(): void {
 
-    let u1 = {key: 'u1', login: 'l1', password: 'p1', name: 'user 1', surname: 'u1', permissions: Permissions.developer};
-    let u2 = {key: 'u2',login: 'l1', password: 'p1', name: 'user 2', surname: 'u1', permissions: Permissions.developer};
-    let u3 = {key: 'u3',login: 'l1', password: 'p1', name: 'user 3', surname: 'u1', permissions: Permissions.developer};
+    let u1 = {key: 'u1', login: 'l1', password: 'p1', name: 'user 1', surname: 'u1', permissions: 'developer'};
+    let u2 = {key: 'u2',login: 'l1', password: 'p1', name: 'user 2', surname: 'u1', permissions: 'developer'};
+    let u3 = {key: 'u3',login: 'l1', password: 'p1', name: 'user 3', surname: 'u1', permissions: 'developer'};
 
     //this.priorities = Object.keys(this.priority).filter(x => isNaN(parseInt(x)));
     //this.priorities = Object.entries(this.priority)
