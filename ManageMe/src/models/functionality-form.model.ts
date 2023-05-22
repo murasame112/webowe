@@ -1,5 +1,4 @@
 import { FormControl, FormGroup} from "@angular/forms"
-import { priority } from "src/enums/priority.enum"
 
 export type FunctionalityForm = {
     name: FormControl<string>,
@@ -7,5 +6,5 @@ export type FunctionalityForm = {
     priority: FormControl<string>,
     projectKey: FormControl<string>,
     ownerKey: FormControl<string>,
-    status: FormControl<number>,
+    status: FormControl<string>,
 }

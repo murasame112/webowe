@@ -1,6 +1,6 @@
 import {Functionality} from './functionality.model';
 import {User} from './user.model';
-import {Status} from 'src/enums/status.enum';
+import {status} from 'src/enums/status.enum';
 import {priority} from 'src/enums/priority.enum';
 
 export type Task = {
@@ -11,7 +11,7 @@ export type Task = {
     functionalityKey: string | undefined,
     // Estimated execution time (in hours)
     exec_time: number | undefined,
-    status: Status | undefined,
+    status: string | undefined,
     added: Date | undefined,
     start: Date | undefined,
     finish: Date | undefined,

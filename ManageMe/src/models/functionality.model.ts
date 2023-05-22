@@ -1,6 +1,6 @@
 import {Project} from './project.model';
 import {User} from './user.model';
-import {Status} from 'src/enums/status.enum';
+import {status} from 'src/enums/status.enum';
 import {priority} from 'src/enums/priority.enum';
 
 export type Functionality = {
@@ -10,6 +10,6 @@ export type Functionality = {
     priority: string | undefined,
     projectKey: string | undefined,
     ownerKey: string | undefined,
-    status: Status | undefined,
+    status: string | undefined,
 }
   

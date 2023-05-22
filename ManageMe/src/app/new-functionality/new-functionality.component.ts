@@ -6,7 +6,7 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { priority } from 'src/enums/priority.enum';
 import { Permissions } from 'src/enums/permissions.enum';
-import { Status } from 'src/enums/status.enum';
+import { status } from 'src/enums/status.enum';
 import { Project } from 'src/models/project.model';
 import { User } from 'src/models/user.model';
 import { ProjectService } from 'src/app/project.service';
@@ -22,7 +22,6 @@ export class NewFunctionalityComponent implements OnInit{
   constructor(private functionalityService: FunctionalityService, private readonly fb: FormBuilder, private projectService: ProjectService) {}
   @Input() functionality: Functionality | undefined;
   new_functionality!: FormGroup<FunctionalityForm>;
-  public status = Status;
   public priorities: string[] = [];
   public projects: Project[] = [];
   public users: User[] = [];
@@ -41,7 +40,8 @@ export class NewFunctionalityComponent implements OnInit{
     this.priorities = Object.values(priority);
     this.projects = this.projectService.getProjects();
     this.users = [u1, u2, u3]; // TODO: tu powinno pobierac userów, ale jeszcze nie ma od tego metody
-    this.statuses = Object.keys(this.status).filter(x => isNaN(parseInt(x)));
+    //this.statuses = Object.keys(this.status).filter(x => isNaN(parseInt(x)));
+    this.statuses = Object.values(status);
     this.new_functionality = this.fb.nonNullable.group({
 
       name: '',
@@ -49,7 +49,7 @@ export class NewFunctionalityComponent implements OnInit{
       priority: '',
       projectKey: '',
       ownerKey: '',
-      status: Status.doing,
+      status: '',
 
     });
   }
