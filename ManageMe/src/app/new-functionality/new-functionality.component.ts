@@ -30,15 +30,16 @@ export class NewFunctionalityComponent implements OnInit{
 
   ngOnInit(): void {
 
-    let u1 = {login: 'l1', password: 'p1', name: 'user 1', surname: 'u1', permissions: Permissions.developer};
-    let u2 = {login: 'l1', password: 'p1', name: 'user 2', surname: 'u1', permissions: Permissions.developer};
-    let u3 = {login: 'l1', password: 'p1', name: 'user 3', surname: 'u1', permissions: Permissions.developer};
+    let u1 = {key: 'u1', login: 'l1', password: 'p1', name: 'user 1', surname: 'u1', permissions: Permissions.developer};
+    let u2 = {key: 'u2',login: 'l1', password: 'p1', name: 'user 2', surname: 'u1', permissions: Permissions.developer};
+    let u3 = {key: 'u3',login: 'l1', password: 'p1', name: 'user 3', surname: 'u1', permissions: Permissions.developer};
 
     //this.priorities = Object.keys(this.priority).filter(x => isNaN(parseInt(x)));
     //this.priorities = Object.entries(this.priority)
     //console.log(Object.entries(priority)[0]);
     this.priorities = Object.values(priority);
     this.projects = this.projectService.getProjects();
+    console.log(this.projects);
     this.users = [u1, u2, u3]; // TODO: tu powinno pobierac userów, ale jeszcze nie ma od tego metody
     //this.statuses = Object.keys(this.status).filter(x => isNaN(parseInt(x)));
     this.statuses = Object.values(status);
@@ -47,8 +48,8 @@ export class NewFunctionalityComponent implements OnInit{
       name: '',
       description: '',
       priority: '',
-      projectKey: '',
-      ownerKey: '',
+      projectKey: <Project>{},
+      ownerKey: <User>{},
       status: '',
 
     });
@@ -56,7 +57,7 @@ export class NewFunctionalityComponent implements OnInit{
 
   onSave() {
     let fun = this.new_functionality.getRawValue();
-    console.log(fun);
+    console.log(fun.ownerKey);
     //this.functionality = this.functionalityService.createFunctionality(fun.name, fun.description, fun.priority, fun.projectKey, fun.ownerKey, fun.status);
     //this.functionalityService.saveFunctionality(this.functionality);
     // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów

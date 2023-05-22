@@ -3,25 +3,25 @@
     <input formControlName="description" placeholder="description">
     <select formControlName="priority">
         <option value="" disabled>priority</option>
-        <option *ngFor="let name of priorities; let i = index" [value]="name">
+        <option *ngFor="let item of priorities; let i = index" [value]="item">
           {{ priorities[i] }}
         </option>
     </select>
     <select formControlName="projectKey">
       <option value="" disabled>project</option>
-      <option *ngFor="let name of projects; let i = index" [value]="name">
+      <option *ngFor="let item of projects; let i = index" [value]="item.key">
         {{ projects[i].name }}
       </option>
     </select>
     <select formControlName="ownerKey">
       <option value="" disabled>owner</option>
-      <option *ngFor="let name of users; let i = index" [value]="name">
+      <option *ngFor="let item of users; let i = index" [value]="item.key">
         {{ users[i].name }}
       </option>
     </select>
     <select formControlName="status">
       <option value="" disabled>status</option>
-      <option *ngFor="let name of statuses; let i = index" [value]="name">
+      <option *ngFor="let item of statuses; let i = index" [value]="item">
         {{ statuses[i] }}
       </option>
   </select>
