@@ -1,4 +1,17 @@
-<p>functionality-list works!</p>
+<table style="border:1px solid black;">
+    <tr>
+        <th>Name</th>
+        <th>Project</th>
+        <th>Actions</th>
+    </tr>
+    <tr
+          *ngFor="let functionality of functionalities">
+          <td style="border:1px solid black;">{{functionality.name}}</td>
+          <td style="border:1px solid black;"> {{functionality.projectKey}}</td>
+          <td style="border:1px solid black;">Edit Delete Details</td>
+    </tr>
+    
+</table>
 <a routerLink="details" routerLinkActive="router-link-active">Functionality details</a><br>
 <a routerLink="new" routerLinkActive="router-link-active">Add new functionality</a><br>
 <a routerLink="/tasks" routerLinkActive="router-link-active">Task List</a><br>
