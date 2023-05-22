@@ -49,6 +49,14 @@ export class FunctionalityService {
     return functionalities;
   }
 
+  // returns functionality by key
+  getFunctionalityByKey(key: string){
+    const functionalities:Array<Functionality> = this.getFunctionalities();
+    let found:Functionality|undefined = functionalities.find(element => element.key == key);
+    return found as Functionality;
+  }
+
+
   // creates functionality (just like constructor)
   createFunctionality(name: string, description: string, priority: string, projectKey: string, ownerKey: string, status: string){
     let functionality: Functionality = {

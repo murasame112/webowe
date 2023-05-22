@@ -1,4 +1,23 @@
-<p>task-list works!</p>
+<table style="border:1px solid black;">
+    <tr>
+        <th>Name</th>
+        <th>Functionality</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Owner</th>
+        <th>Actions</th>
+    </tr>
+    <tr
+          *ngFor="let task of tasks; let i = index">
+          <td style="border:1px solid black;">{{task.name}}</td>
+          <td style="border:1px solid black;"> {{functionalityNames[i]}}</td>
+          <td style="border:1px solid black;">{{task.priority}}</td>
+          <td style="border:1px solid black;">{{task.status}}</td>
+          <!-- <td style="border:1px solid black;">{{task.ownerNames[i]}}</td> -->
+          <td style="border:1px solid black;">Edit Delete Details</td>
+    </tr>
+    
+</table>
 <a routerLink="details" routerLinkActive="router-link-active">Task details</a><br>
 <a routerLink="new" routerLinkActive="router-link-active">Add new task</a><br>
 <hr>

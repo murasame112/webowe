@@ -2,12 +2,16 @@
     <tr>
         <th>Name</th>
         <th>Project</th>
+        <th>Priority</th>
+        <th>Status</th>
         <th>Actions</th>
     </tr>
     <tr
           *ngFor="let functionality of functionalities; let i = index">
           <td style="border:1px solid black;">{{functionality.name}}</td>
           <td style="border:1px solid black;"> {{projectNames[i]}}</td>
+          <td style="border:1px solid black;">{{functionality.priority}}</td>
+          <td style="border:1px solid black;">{{functionality.status}}</td>    
           <td style="border:1px solid black;">Edit Delete Details</td>
     </tr>
     
