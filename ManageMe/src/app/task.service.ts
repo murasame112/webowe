@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Task } from 'src/models/task.model';
 import { Status } from 'src/enums/status.enum';
-import { Priority } from 'src/enums/priority.enum';
+import { priority } from 'src/enums/priority.enum';
 
 
 @Injectable({
@@ -51,7 +51,7 @@ export class TaskService {
   }
 
   // creates task (just like constructor)
-  createTask(name: string, description: string, priority: Priority, functionalityKey: string, exec_time: number, status: Status, added: Date, start: Date, finish: Date, userKey: string){
+  createTask(name: string, description: string, priority: string, functionalityKey: string, exec_time: number, status: Status, added: Date, start: Date, finish: Date, userKey: string){
     let task: Task = {
       key: undefined,
       name: undefined,
@@ -115,11 +115,11 @@ export class TaskService {
   
   // creates few default tasks for testing
   createDefault(){
-    let t1 = this.createTask('task1', 't1 opis', Priority.high, 'f1', 6, Status.todo, new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u1');
+    let t1 = this.createTask('task1', 't1 opis', 'high', 'f1', 6, Status.todo, new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u1');
     this.saveTask(t1);
-    let t2 = this.createTask('task2', 't2 opis', Priority.low, 'f2', 2, Status.done, new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u2');
+    let t2 = this.createTask('task2', 't2 opis','low', 'f2', 2, Status.done, new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u2');
     this.saveTask(t2);
-    let t3 = this.createTask('task3', 't3 opis', Priority.medium, 'f1', 4, Status.doing, new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u1');
+    let t3 = this.createTask('task3', 't3 opis', 'medium', 'f1', 4, Status.doing, new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u1');
     this.saveTask(t3);
     
   }

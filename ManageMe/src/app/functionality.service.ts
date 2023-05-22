@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Functionality } from 'src/models/functionality.model';
-import { Priority } from 'src/enums/priority.enum';
+import { priority } from 'src/enums/priority.enum';
 import { Status } from 'src/enums/status.enum';
 
 @Injectable({
@@ -50,7 +50,7 @@ export class FunctionalityService {
   }
 
   // creates functionality (just like constructor)
-  createFunctionality(name: string, description: string, priority: Priority, projectKey: string, ownerKey: string, status: Status){
+  createFunctionality(name: string, description: string, priority: string, projectKey: string, ownerKey: string, status: Status){
     let functionality: Functionality = {
       key: undefined,
       name: undefined,
@@ -106,15 +106,15 @@ export class FunctionalityService {
   
   // creates few default functionalities for testing
   createDefault(){
-    let f1 = this.createFunctionality('funkcjonalnosc 1', 'opis tejze funkcjonalnsoci', Priority.high, 'p1', 'u1', Status.todo);
+    let f1 = this.createFunctionality('funkcjonalnosc 1', 'opis tejze funkcjonalnsoci', 'high', 'p1', 'u1', Status.todo);
     this.saveFunctionality(f1);
-    let f2 = this.createFunctionality('funkcjonalnosc 2', 'opis tejze funkcjonalnsoci', Priority.low, 'p1', 'u1', Status.todo);
+    let f2 = this.createFunctionality('funkcjonalnosc 2', 'opis tejze funkcjonalnsoci', 'low', 'p1', 'u1', Status.todo);
     this.saveFunctionality(f2);
-    let f3 = this.createFunctionality('to do innego projektu', 'opis tejze 3funkcjonalnsoci', Priority.high, 'p2', 'u2', Status.done);
+    let f3 = this.createFunctionality('to do innego projektu', 'opis tejze 3funkcjonalnsoci', 'high', 'p2', 'u2', Status.done);
     this.saveFunctionality(f3);
-    let f4 = this.createFunctionality('jakas funkcjonalnosc', 'nikt tego nie czyta', Priority.medium, 'p3', 'u1', Status.doing);
+    let f4 = this.createFunctionality('jakas funkcjonalnosc', 'nikt tego nie czyta', 'medium', 'p3', 'u1', Status.doing);
     this.saveFunctionality(f4);
-    let f5 = this.createFunctionality('f5 f5 f5', 'f5 opis', Priority.medium, 'p4', 'u2', Status.doing);
+    let f5 = this.createFunctionality('f5 f5 f5', 'f5 opis', 'medium', 'p4', 'u2', Status.doing);
     this.saveFunctionality(f5);
     
   }

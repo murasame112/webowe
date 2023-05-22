@@ -4,7 +4,7 @@ import { Functionality } from 'src/models/functionality.model';
 import { FunctionalityForm } from 'src/models/functionality-form.model';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Priority } from 'src/enums/priority.enum';
+import { priority } from 'src/enums/priority.enum';
 import { Permissions } from 'src/enums/permissions.enum';
 import { Status } from 'src/enums/status.enum';
 import { Project } from 'src/models/project.model';
@@ -22,10 +22,8 @@ export class NewFunctionalityComponent implements OnInit{
   constructor(private functionalityService: FunctionalityService, private readonly fb: FormBuilder, private projectService: ProjectService) {}
   @Input() functionality: Functionality | undefined;
   new_functionality!: FormGroup<FunctionalityForm>;
-  //public priorities = Object.values(Priority);
-  //public priority = Priority;
   public status = Status;
-  public priorities: Priority[] = [];
+  public priorities: string[] = [];
   public projects: Project[] = [];
   public users: User[] = [];
   public statuses: string[] = [];
@@ -38,7 +36,9 @@ export class NewFunctionalityComponent implements OnInit{
     let u3 = {login: 'l1', password: 'p1', name: 'user 3', surname: 'u1', permissions: Permissions.developer};
 
     //this.priorities = Object.keys(this.priority).filter(x => isNaN(parseInt(x)));
-    this.priorities = Object.entries(this.priority)
+    //this.priorities = Object.entries(this.priority)
+    //console.log(Object.entries(priority)[0]);
+    this.priorities = Object.values(priority);
     this.projects = this.projectService.getProjects();
     this.users = [u1, u2, u3]; // TODO: tu powinno pobierac userów, ale jeszcze nie ma od tego metody
     this.statuses = Object.keys(this.status).filter(x => isNaN(parseInt(x)));
@@ -46,8 +46,7 @@ export class NewFunctionalityComponent implements OnInit{
 
       name: '',
       description: '',
-      priority: ,
-      //priority: Priority.low as string,
+      priority: '',
       projectKey: '',
       ownerKey: '',
       status: Status.doing,
@@ -58,8 +57,8 @@ export class NewFunctionalityComponent implements OnInit{
   onSave() {
     let fun = this.new_functionality.getRawValue();
     console.log(fun);
-    this.functionality = this.functionalityService.createFunctionality(fun.name, fun.description, fun.priority, fun.projectKey, fun.ownerKey, fun.status);
-    this.functionalityService.saveFunctionality(this.functionality);
+    //this.functionality = this.functionalityService.createFunctionality(fun.name, fun.description, fun.priority, fun.projectKey, fun.ownerKey, fun.status);
+    //this.functionalityService.saveFunctionality(this.functionality);
     // TODO: tu enumy zapisywane jako string, a w np createDefault() jako number. trzeba to bedzie ogarnac zeby tez szlo number
     // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów
   }
