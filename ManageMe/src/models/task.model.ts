@@ -12,8 +12,8 @@ export type Task = {
     // Estimated execution time (in hours)
     exec_time: number | undefined,
     status: string | undefined,
-    added: Date | undefined,
-    start: Date | undefined,
-    finish: Date | undefined,
     userKey: string | undefined,
+    added: Date | undefined,
+    start?: Date | undefined,
+    finish?: Date | undefined, 
 }

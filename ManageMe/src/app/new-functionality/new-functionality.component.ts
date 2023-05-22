@@ -1,13 +1,12 @@
-import { Component, OnInit, Input, OnDestroy, EventEmitter, Output } from '@angular/core';
-import { FunctionalityService } from 'src/app/functionality.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { Functionality } from 'src/models/functionality.model';
-import { FunctionalityForm } from 'src/models/functionality-form.model';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { priority } from 'src/enums/priority.enum';
-import { status } from 'src/enums/status.enum';
 import { Project } from 'src/models/project.model';
 import { User } from 'src/models/user.model';
+import { FunctionalityForm } from 'src/models/functionality-form.model';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { priority } from 'src/enums/priority.enum';
+import { status } from 'src/enums/status.enum';
+import { FunctionalityService } from 'src/app/functionality.service';
 import { ProjectService } from 'src/app/project.service';
 
 
@@ -24,7 +23,6 @@ export class NewFunctionalityComponent implements OnInit{
   public priorities: string[] = [];
   public projects: Project[] = [];
   public users: User[] = [];
-  public statuses: string[] = [];
 
 
   ngOnInit(): void {
@@ -38,10 +36,8 @@ export class NewFunctionalityComponent implements OnInit{
     //console.log(Object.entries(priority)[0]);
     this.priorities = Object.values(priority);
     this.projects = this.projectService.getProjects();
-    console.log(this.projects);
     this.users = [u1, u2, u3]; // TODO: tu powinno pobierac userów, ale jeszcze nie ma od tego metody
     //this.statuses = Object.keys(this.status).filter(x => isNaN(parseInt(x)));
-    this.statuses = Object.values(status);
     this.new_functionality = this.fb.nonNullable.group({
 
       name: '',
@@ -49,16 +45,18 @@ export class NewFunctionalityComponent implements OnInit{
       priority: '',
       projectKey: <Project>{},
       ownerKey: <User>{},
-      status: '',
-
     });
   }
 
   onSave() {
     let fun = this.new_functionality.getRawValue();
-    this.functionality = this.functionalityService.createFunctionality(fun.name, fun.description, fun.priority, fun.projectKey.key as string, fun.ownerKey.key as string, fun.status);
+    if(typeof fun.projectKey != 'string' || typeof fun.ownerKey != 'string'){
+      return false;
+    }
+    this.functionality = this.functionalityService.createFunctionality(fun.name, fun.description, fun.priority, fun.projectKey as string, fun.ownerKey as string, 'todo');
     this.functionalityService.saveFunctionality(this.functionality);
     // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów
+    return true;
   }
 }
 

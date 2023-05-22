@@ -1,3 +1,27 @@
-<p>new-task works!</p>
+<form [formGroup]="new_task">
+    <input formControlName="name" placeholder="name">
+    <input formControlName="description" placeholder="description">
+    <select formControlName="priority">
+        <option value="" disabled>priority</option>
+        <option *ngFor="let item of priorities; let i = index" [value]="item">
+          {{ priorities[i] }}
+        </option>
+    </select>
+    <select formControlName="functionalityKey">
+      <option value="" disabled>functionality</option>
+      <option *ngFor="let item of functionalities; let i = index" [value]="item.key">
+        {{ functionalities[i].name }}
+      </option>
+    </select>
+    <input formControlName="exec_time" placeholder="estimated execution time" type="number">
+    <select formControlName="ownerKey">
+        <option value="" disabled>owner</option>
+        <option *ngFor="let item of users; let i = index" [value]="item.key">
+          {{ users[i].name }}
+        </option>
+      </select>
+</form>
+
+<button (click)="onSave()">Save</button>
 <hr>
 <a routerLink="/" routerLinkActive="router-link-active">back</a>

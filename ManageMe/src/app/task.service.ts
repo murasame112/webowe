@@ -38,7 +38,7 @@ export class TaskService {
         storage[keys[i]] =  localStorage.getItem(keys[i]);
     }
     for (const [key, value] of Object.entries(storage)) {
-      if(key.startsWith('p')){
+      if(key.startsWith('t')){
         // TODO: wymyslic jak sie pozbyc ponizszego if'a
         if(typeof value == 'string'){
           const tsk: Task = JSON.parse(value);
@@ -51,7 +51,7 @@ export class TaskService {
   }
 
   // creates task (just like constructor)
-  createTask(name: string, description: string, priority: string, functionalityKey: string, exec_time: number, status: string, added: Date, start: Date, finish: Date, userKey: string){
+  createTask(name: string, description: string, priority: string, functionalityKey: string, exec_time: number, status: string, userKey: string, added: Date, start?: Date, finish?: Date){
     let task: Task = {
       key: undefined,
       name: undefined,
@@ -60,10 +60,10 @@ export class TaskService {
       functionalityKey: undefined,
       exec_time: undefined,
       status: undefined,
+      userKey: undefined,
       added: undefined,
       start: undefined,
       finish: undefined,
-      userKey: undefined,
     };
     
     let key = 't';
@@ -102,7 +102,6 @@ export class TaskService {
     task.start = start;
     task.finish = finish;
     task.userKey = userKey;
-
     return task;
 
   }
@@ -115,13 +114,14 @@ export class TaskService {
   
   // creates few default tasks for testing
   createDefault(){
-    let t1 = this.createTask('task1', 't1 opis', 'high', 'f1', 6, 'todo', new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u1');
+    let t1 = this.createTask('task1', 't1 opis', 'high', 'f1', 6, 'todo', 'u1', new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'));
     this.saveTask(t1);
-    let t2 = this.createTask('task2', 't2 opis','low', 'f2', 2, 'done', new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u2');
+    let t2 = this.createTask('task2', 't2 opis','low', 'f2', 2, 'done', 'u1', new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'));
     this.saveTask(t2);
-    let t3 = this.createTask('task3', 't3 opis', 'medium', 'f1', 4, 'doing', new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'), 'u1');
+    let t3 = this.createTask('task3', 't3 opis', 'medium', 'f1', 4, 'doing', 'u1', new Date('November 9, 2000'), undefined, undefined);
     this.saveTask(t3);
     
   }
-  
+ 
+  //TODO: zmiana statusu funkcjonalnosci, jesli task jest doing a ona todo
 }

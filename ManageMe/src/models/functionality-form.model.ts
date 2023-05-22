@@ -8,5 +8,4 @@ export type FunctionalityForm = {
     priority: FormControl<string>,
     projectKey: FormControl<Project>,
     ownerKey: FormControl<User>,
-    status: FormControl<string>,
 }

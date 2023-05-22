@@ -19,12 +19,6 @@
         {{ users[i].name }}
       </option>
     </select>
-    <select formControlName="status">
-      <option value="" disabled>status</option>
-      <option *ngFor="let item of statuses; let i = index" [value]="item">
-        {{ statuses[i] }}
-      </option>
-  </select>
 </form>
 
 <button (click)="onSave()">Save</button>

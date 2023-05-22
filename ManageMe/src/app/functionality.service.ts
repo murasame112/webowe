@@ -37,7 +37,7 @@ export class FunctionalityService {
         storage[keys[i]] =  localStorage.getItem(keys[i]);
     }
     for (const [key, value] of Object.entries(storage)) {
-      if(key.startsWith('p')){
+      if(key.startsWith('f')){
         // TODO: wymyslic jak sie pozbyc ponizszego if'a
         if(typeof value == 'string'){
           const fun: Functionality = JSON.parse(value);
