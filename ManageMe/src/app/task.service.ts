@@ -107,8 +107,14 @@ export class TaskService {
   }
 
   getTasksForFunctionality(functionalityKey: string){
-    //TODO: zbiera wszystkie taski dla danej funkcjonalnosci
-    // zwraca Array<Task> zapewne?
+    let allTasks = this.getTasks();
+    let tasks: Array<Task> = [];
+    allTasks.forEach((element) => {
+      if(element.functionalityKey == functionalityKey){
+        tasks.push(element);
+      }
+    })
+    return tasks;
   }
 
 
