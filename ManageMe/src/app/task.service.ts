@@ -118,6 +118,12 @@ export class TaskService {
     return tasks;
   }
 
+    // returns task by key
+    getTaskByKey(key: string){
+      const tasks:Array<Task> = this.getTasks();
+      let found:Task|undefined = tasks.find(element => element.key == key);
+      return found as Task;
+    }
 
   // creates few default tasks for testing
   createDefault(){
@@ -136,6 +142,17 @@ export class TaskService {
   }
 
   statusChanged(key: string){
+    // let tsk = this.getTaskByKey(key);
+    // fun.status = newStatus;
+    // if(fun.status == 'done'){
+    //   let tasks = this.taskService.getTasksForFunctionality(fun.key as string);
+    //   tasks.forEach((element) => {
+    //     if(element.status != 'done'){
+    //       element.status = 'done';
+    //       this.taskService.saveTask(element);
+    //     }
+    //   })
+    // }
     // get task by key
     // if status changed to 'doing'
     // get func by key from task
