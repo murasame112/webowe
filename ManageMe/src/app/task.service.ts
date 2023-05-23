@@ -141,26 +141,27 @@ export class TaskService {
     localStorage.removeItem(key);
   }
 
-  statusChanged(key: string){
-    // let tsk = this.getTaskByKey(key);
-    // fun.status = newStatus;
-    // if(fun.status == 'done'){
-    //   let tasks = this.taskService.getTasksForFunctionality(fun.key as string);
-    //   tasks.forEach((element) => {
-    //     if(element.status != 'done'){
-    //       element.status = 'done';
-    //       this.taskService.saveTask(element);
-    //     }
-    //   })
-    // }
-    // get task by key
-    // if status changed to 'doing'
-    // get func by key from task
-    // if func is todo -> doing
+  statusChanged(key: string, newStatus: string){
+    let tsk = this.getTaskByKey(key);
+    tsk.status = newStatus;
+    // get func for task
+    // let fun =
+    if(tsk.status == 'doing'){
+      /*
+      if(fun.status == 'todo'){
+        fun.status = 'doing';
+      }
+      */
+    }
+    if(tsk.status == 'done'){
+      // get all tasks for func
+      // foreach
+      // if element.status != 'done'
+        // counter++
 
-    // if status changed to 'done'
-    // get func by key from ask
-    // if all tasks are 'done' -> change func to 'done'
+      // if counter == 0
+      // fun.status = 'done'
+    }
   }
 
   //TODO: zmiana statusu funkcjonalnosci, jesli task jest doing a ona todo
