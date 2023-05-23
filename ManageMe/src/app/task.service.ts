@@ -10,7 +10,7 @@ import { priority } from 'src/enums/priority.enum';
 export class TaskService {
 
   constructor() { }
-  
+
   public saveTask(task: Task) {
 
     let key = 'undefined_key';
@@ -26,10 +26,10 @@ export class TaskService {
     if(localStorage.length == 0){
       // TODO: przemyslec jak to rozwiazac inaczej niz return false
         //return false;
-    }  
-    
+    }
+
     const tasks: Array<Task> = [];
-    
+
     let storage: any = {},
         keys = Object.keys(localStorage),
         i = keys.length;
@@ -45,7 +45,7 @@ export class TaskService {
           tasks.push(tsk);
         }
       }
-      
+
     }
     return tasks;
   }
@@ -56,7 +56,7 @@ export class TaskService {
       key: undefined,
       name: undefined,
       description: undefined,
-      priority: undefined, 
+      priority: undefined,
       functionalityKey: undefined,
       exec_time: undefined,
       status: undefined,
@@ -65,7 +65,7 @@ export class TaskService {
       start: undefined,
       finish: undefined,
     };
-    
+
     let key = 't';
     let highest = '';
     let highestId = 0;
@@ -84,9 +84,9 @@ export class TaskService {
         newHighestId = parseInt(highest, 10);
         if(newHighestId > highestId){
           highestId = newHighestId;
-        }      
+        }
       }
-      
+
     }
     highestId++;
     key += highestId;
@@ -111,7 +111,7 @@ export class TaskService {
     // zwraca Array<Task> zapewne?
   }
 
-  
+
   // creates few default tasks for testing
   createDefault(){
     let t1 = this.createTask('task1', 't1 opis', 'high', 'f1', 6, 'todo', 'u1', new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'));
@@ -120,8 +120,24 @@ export class TaskService {
     this.saveTask(t2);
     let t3 = this.createTask('task3', 't3 opis', 'medium', 'f1', 4, 'doing', 'u3', new Date('November 9, 2000'), undefined, undefined);
     this.saveTask(t3);
-    
+
   }
- 
+
+  // deletes task by key
+  deleteTask(key: string){
+    localStorage.removeItem(key);
+  }
+
+  statusChanged(key: string){
+    // get task by key
+    // if status changed to 'doing'
+    // get func by key from task
+    // if func is todo -> doing
+
+    // if status changed to 'done'
+    // get func by key from ask
+    // if all tasks are 'done' -> change func to 'done'
+  }
+
   //TODO: zmiana statusu funkcjonalnosci, jesli task jest doing a ona todo
 }

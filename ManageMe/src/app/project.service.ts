@@ -25,10 +25,10 @@ export class ProjectService {
     if(localStorage.length == 0){
       // TODO: przemyslec jak to rozwiazac inaczej niz return false
         //return false;
-    }  
-    
+    }
+
     const projects: Array<Project> = [];
-    
+
     let storage: any = {},
         keys = Object.keys(localStorage),
         i = keys.length;
@@ -44,7 +44,7 @@ export class ProjectService {
           projects.push(prj);
         }
       }
-      
+
     }
     return projects;
   }
@@ -62,7 +62,7 @@ export class ProjectService {
     let found:Project|undefined = projects.find(element => element.key == key);
     return found as Project;
   }
-  
+
   // creates project (just like constructor)
   createProject(name: string, description: string, active: boolean){
     let project: Project = {
@@ -71,7 +71,7 @@ export class ProjectService {
       description: undefined,
       active: undefined,
     };
-    
+
     let key = 'p';
     let highest = '';
     let highestId = 0;
@@ -90,9 +90,9 @@ export class ProjectService {
         newHighestId = parseInt(highest, 10);
         if(newHighestId > highestId){
           highestId = newHighestId;
-        }      
+        }
       }
-      
+
     }
     highestId++;
     key += highestId;
@@ -115,9 +115,14 @@ export class ProjectService {
     this.saveProject(p3);
     let p4 = this.createProject('newNewNewNewNew project', 'awangardowy opis czwartego projektu', false);
     this.saveProject(p4);
-    
+
   }
 
-  
+  // deletes project by given key
+  deleteProject(key: string){
+      localStorage.removeItem(key);
+  }
+
+
 
 }

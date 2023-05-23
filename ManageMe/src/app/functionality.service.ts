@@ -25,10 +25,10 @@ export class FunctionalityService {
     if(localStorage.length == 0){
       // TODO: przemyslec jak to rozwiazac inaczej niz return false
         //return false;
-    }  
-    
+    }
+
     const functionalities: Array<Functionality> = [];
-    
+
     let storage: any = {},
         keys = Object.keys(localStorage),
         i = keys.length;
@@ -44,7 +44,7 @@ export class FunctionalityService {
           functionalities.push(fun);
         }
       }
-      
+
     }
     return functionalities;
   }
@@ -63,12 +63,12 @@ export class FunctionalityService {
       key: undefined,
       name: undefined,
       description: undefined,
-      priority: undefined, 
-      projectKey: undefined, 
-      ownerKey: undefined, 
+      priority: undefined,
+      projectKey: undefined,
+      ownerKey: undefined,
       status: undefined,
     };
-    
+
     let key = 'f';
     let highest = '';
     let highestId = 0;
@@ -87,9 +87,9 @@ export class FunctionalityService {
         newHighestId = parseInt(highest, 10);
         if(newHighestId > highestId){
           highestId = newHighestId;
-        }      
+        }
       }
-      
+
     }
     highestId++;
     key += highestId;
@@ -111,7 +111,7 @@ export class FunctionalityService {
     // zwraca Array<Functionality> zapewne?
   }
 
-  
+
   // creates few default functionalities for testing
   createDefault(){
     let f1 = this.createFunctionality('funkcjonalnosc 1', 'opis tejze funkcjonalnsoci', 'high', 'p1', 'u1', 'todo');
@@ -124,10 +124,21 @@ export class FunctionalityService {
     this.saveFunctionality(f4);
     let f5 = this.createFunctionality('f5 f5 f5', 'f5 opis', 'medium', 'p4', 'u2', 'todo');
     this.saveFunctionality(f5);
-    
-  }
-  
 
-  
- 
+  }
+
+  // deletes functionality
+  deleteFunctionality(key: string){
+    localStorage.removeItem(key);
+  }
+
+  statusChanged(key: string){
+    // get func by key
+    // change status
+    // if func 'done' -> // if func has tasks that are not 'done' -> change all tasks to 'done'
+  }
+
+
+
+
 }

@@ -21,10 +21,10 @@ export class UserService {
     if(localStorage.length == 0){
       // TODO: przemyslec jak to rozwiazac inaczej niz return false
         //return false;
-    }  
-    
+    }
+
     const users: Array<User> = [];
-    
+
     let storage: any = {},
         keys = Object.keys(localStorage),
         i = keys.length;
@@ -40,7 +40,7 @@ export class UserService {
           users.push(usr);
         }
       }
-      
+
     }
     return users;
   }
@@ -52,7 +52,7 @@ export class UserService {
     let found:User|undefined = users.find(element => element.key == key);
     return found as User;
   }
-  
+
   // creates user (just like constructor)
   createUser(login: string, passowrd: string, name: string, surname: string, permissions: string){
     let user: User = {
@@ -63,7 +63,7 @@ export class UserService {
       surname: undefined,
       permissions: undefined,
     };
-    
+
     let key = 'u';
     let highest = '';
     let highestId = 0;
@@ -82,9 +82,9 @@ export class UserService {
         newHighestId = parseInt(highest, 10);
         if(newHighestId > highestId){
           highestId = newHighestId;
-        }      
+        }
       }
-      
+
     }
     highestId++;
     key += highestId;
@@ -107,7 +107,12 @@ export class UserService {
     this.saveUser(u2);
     let u3 = this.createUser('l3', 'p3', 'user 3', 'u3', 'developer');
     this.saveUser(u3);
-  
-    
+
+
+  }
+
+  // deletes user
+  deleteUser(key: string){
+    localStorage.removeItem(key);
   }
 }
