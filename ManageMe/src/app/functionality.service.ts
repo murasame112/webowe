@@ -107,8 +107,14 @@ export class FunctionalityService {
   }
 
   getFunctionalitiesForProject(projectKey: string){
-    //TODO: zbiera wszystkie funkcjonalnosci dla danego projektu
-    // zwraca Array<Functionality> zapewne?
+    let allFunctionalities = this.getFunctionalities();
+    let functionalities: Array<Functionality> = [];
+    allFunctionalities.forEach((element) => {
+      if(element.projectKey == projectKey){
+        functionalities.push(element);
+      }
+    })
+    return functionalities;
   }
 
 
