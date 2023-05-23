@@ -12,6 +12,7 @@ export class TaskService {
   constructor() { }
 
   public saveTask(task: Task) {
+    //TODO: jesli obiekt z tym samym key juz istnieje, to go usunac (ewentualnie sprawdzic czy setItem automatycznie nadpisuje)
 
     let key = 'undefined_key';
     if(typeof task.key == 'string'){

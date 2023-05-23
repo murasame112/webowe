@@ -12,6 +12,7 @@ export class ProjectService {
 
   // saves project to local storage
   public saveProject(project: Project) {
+    //TODO: jesli obiekt z tym samym key juz istnieje, to go usunac (ewentualnie sprawdzic czy setItem automatycznie nadpisuje)
     let key = 'undefined_key';
     if(typeof project.key == 'string'){
       key = project.key;

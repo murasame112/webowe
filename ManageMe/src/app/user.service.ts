@@ -8,6 +8,7 @@ export class UserService {
 
   constructor() { }
   public saveUser(user: User) {
+    //TODO: jesli obiekt z tym samym key juz istnieje, to go usunac (ewentualnie sprawdzic czy setItem automatycznie nadpisuje)
     let key = 'undefined_key';
     if(typeof user.key == 'string'){
       key = user.key;

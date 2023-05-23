@@ -1,6 +1,6 @@
 List of files that contain "TODOs":
 
-project.service.ts (i tak samo w functionalitiy i task)
+project.service.ts (i tak samo w functionalitiy i task i user)
 new-project.component.ts
 new-functionality.ocmponent.ts
 functionality-list.component.ts

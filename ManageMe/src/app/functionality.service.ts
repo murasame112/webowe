@@ -2,16 +2,18 @@ import { Injectable } from '@angular/core';
 import { Functionality } from 'src/models/functionality.model';
 import { priority } from 'src/enums/priority.enum';
 import { status } from 'src/enums/status.enum';
+import { TaskService } from './task.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FunctionalityService {
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   public saveFunctionality(functionality: Functionality) {
 
+    //TODO: jesli obiekt z tym samym key juz istnieje, to go usunac (ewentualnie sprawdzic czy setItem automatycznie nadpisuje)
     let key = 'undefined_key';
     if(typeof functionality.key == 'string'){
       key = functionality.key;
@@ -138,10 +140,18 @@ export class FunctionalityService {
     localStorage.removeItem(key);
   }
 
-  statusChanged(key: string){
-    // get func by key
-    // change status
-    // if func 'done' -> // if func has tasks that are not 'done' -> change all tasks to 'done'
+  statusChanged(key: string, newStatus: string){
+    let fun = this.getFunctionalityByKey(key);
+    fun.status = newStatus;
+    if(fun.status == 'done'){
+      let tasks = this.taskService.getTasksForFunctionality(fun.key as string);
+      tasks.forEach((element) => {
+        if(element.status != 'done'){
+          element.status = 'done';
+          this.taskService.saveTask(element);
+        }
+      })
+    }
   }
 
 
