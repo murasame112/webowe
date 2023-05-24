@@ -30,4 +30,13 @@ export class FunctionalityListComponent implements OnInit{
     // do obiektu dodajemy wartosc projectName?
     console.log(this.functionalities);
   }
+
+  onDeleteFunctionality(functionality: Functionality, index: number){
+    this.functionalityService.deleteFunctionality(functionality.key as string);
+    document.getElementById('tr'+index)?.remove();
+  }
+
+  onDetailsFunctionality(functionality: Functionality){
+    
+  }
 }

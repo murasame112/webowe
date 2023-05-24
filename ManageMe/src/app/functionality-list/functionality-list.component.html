@@ -7,12 +7,12 @@
         <th>Actions</th>
     </tr>
     <tr
-          *ngFor="let functionality of functionalities; let i = index">
+          *ngFor="let functionality of functionalities; let i = index" id="tr{{i}}">
           <td style="border:1px solid black;">{{functionality.name}}</td>
           <td style="border:1px solid black;"> {{projectNames[i]}}</td>
           <td style="border:1px solid black;">{{functionality.priority}}</td>
           <td style="border:1px solid black;">{{functionality.status}}</td>    
-          <td style="border:1px solid black;">Edit Delete Details</td>
+          <td style="border:1px solid black;"><button (click)="onDeleteFunctionality(functionality, i)">Delete</button><button (click)="onDetailsFunctionality(functionality)">Details</button></td>
     </tr>
     
 </table>
