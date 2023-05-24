@@ -4,9 +4,9 @@
     <th>Actions</th>
 </tr>
 <tr
-      *ngFor="let project of projects">
+      *ngFor="let project of projects; let i = index" id="tr{{i}}">
       <td style="border:1px solid black;">{{project.name}}</td>
-      <td style="border:1px solid black;"><button (click)="onDeleteProject(project)">Delete</button><button (click)="onDetailsProject(project)">Details</button></td>
+      <td style="border:1px solid black;"><button (click)="onDeleteProject(project, i)">Delete</button><button (click)="onDetailsProject(project)">Details</button></td>
 </tr>
 
 </table>

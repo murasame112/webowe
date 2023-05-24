@@ -19,11 +19,12 @@ export class ProjectListComponent implements OnInit {
     }
   }
 
-  onDeleteProject(project: Project){
-    console.log(project);
+  onDeleteProject(project: Project, index: number){
+    this.projectService.deleteProject(project.key as string);
+    document.getElementById('tr'+index)?.remove();
   }
 
   onDetailsProject(project: Project){
-    console.log(project);
+    
   }
 }
