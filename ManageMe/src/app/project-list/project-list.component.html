@@ -6,7 +6,7 @@
 <tr
       *ngFor="let project of projects">
       <td style="border:1px solid black;">{{project.name}}</td>
-      <td style="border:1px solid black;">Edit <a (click)="onDeleteProject()">Delete</a> Details</td>
+      <td style="border:1px solid black;"><button (click)="onDeleteProject(project)">Delete</button><button (click)="onDetailsProject(project)">Details</button></td>
 </tr>
 
 </table>

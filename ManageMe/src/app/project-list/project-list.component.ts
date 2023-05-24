@@ -18,4 +18,12 @@ export class ProjectListComponent implements OnInit {
       this.projects = this.projectsUndef;
     }
   }
+
+  onDeleteProject(project: Project){
+    console.log(project);
+  }
+
+  onDetailsProject(project: Project){
+    console.log(project);
+  }
 }
