@@ -1,16 +1,15 @@
-<table style="border:1px solid black;">
+<table>
 <tr>
     <th>Name</th>
     <th>Actions</th>
 </tr>
 <tr
       *ngFor="let project of projects; let i = index" id="tr{{i}}">
-      <td style="border:1px solid black;">{{project.name}}</td>
-      <td style="border:1px solid black;"><button (click)="onDeleteProject(project, i)">Delete</button><button (click)="onDetailsProject(project)">Details</button></td>
+      <td>{{project.name}}</td>
+      <td><button (click)="onDeleteProject(project, i)">Delete</button><button (click)="onDetailsProject(project)" routerLink="details" routerLinkActive="router-link-active">Details</button></td>
 </tr>
 
 </table>
-<a routerLink="details" routerLinkActive="router-link-active">Project Details</a><br>
 <a routerLink="new" routerLinkActive="router-link-active">Add new project</a>
 <hr>
 <a routerLink="/" routerLinkActive="router-link-active">back</a>
