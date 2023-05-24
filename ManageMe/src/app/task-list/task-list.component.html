@@ -8,13 +8,13 @@
         <th>Actions</th>
     </tr>
     <tr
-          *ngFor="let task of tasks; let i = index">
+          *ngFor="let task of tasks; let i = index" id="tr{{i}}">
           <td style="border:1px solid black;">{{task.name}}</td>
           <td style="border:1px solid black;"> {{functionalityNames[i]}}</td>
           <td style="border:1px solid black;">{{task.priority}}</td>
           <td style="border:1px solid black;">{{task.status}}</td>
           <td style="border:1px solid black;">{{ownerNames[i]}}</td>
-          <td style="border:1px solid black;">Edit Delete Details</td>
+          <td style="border:1px solid black;"><button (click)="onDeleteTask(task, i)">Delete</button><button (click)="onDetailsTask(task)">Details</button></td>
     </tr>
     
 </table>

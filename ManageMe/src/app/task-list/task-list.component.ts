@@ -40,4 +40,13 @@ export class TaskListComponent implements OnInit{
     // do obiektu dodajemy wartosc projectName?
     console.log(this.tasks);
   }
+
+  onDeleteTask(task: Task, index: number){
+    this.taskService.deleteTask(task.key as string);
+    document.getElementById('tr'+index)?.remove();
+  }
+
+  onDetailsTask(task: Task){
+    
+  }
 }
