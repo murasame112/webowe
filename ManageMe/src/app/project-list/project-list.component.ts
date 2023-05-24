@@ -1,4 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
+import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/project.service';
 import {Project} from 'src/models/project.model';
 
@@ -8,7 +9,7 @@ import {Project} from 'src/models/project.model';
   styleUrls: ['./project-list.component.scss']
 })
 export class ProjectListComponent implements OnInit {
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService, private router: Router) {}
   @Input() projects:Array<Project> = [];
   @Input() projectsUndef:Array<Project> | undefined;
   ngOnInit(): void {    
@@ -25,6 +26,6 @@ export class ProjectListComponent implements OnInit {
   }
 
   onDetailsProject(project: Project){
-    
+    this.router.navigate(['projects/details', project.key])
   }
 }

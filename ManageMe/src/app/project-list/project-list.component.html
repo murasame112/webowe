@@ -6,7 +6,7 @@
 <tr
       *ngFor="let project of projects; let i = index" id="tr{{i}}">
       <td>{{project.name}}</td>
-      <td><button (click)="onDeleteProject(project, i)">Delete</button><button (click)="onDetailsProject(project)" routerLink="details" routerLinkActive="router-link-active">Details</button></td>
+      <td><button (click)="onDeleteProject(project, i)">Delete</button><button [routerLink]="['details', project.key]" routerLinkActive="router-link-active">Details</button></td>
 </tr>
 
 </table>
@@ -14,3 +14,6 @@
 <hr>
 <a routerLink="/" routerLinkActive="router-link-active">back</a>
 <router-outlet></router-outlet>
+
+
+<!-- (click)="onDetailsProject(project) -->

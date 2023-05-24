@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: '', component: SummaryComponent},
   {path: 'projects', component: ProjectListComponent},
     {path: 'projects/new', component: NewProjectComponent},
-    {path: 'projects/details', component: ProjectDetailsComponent},
+    {path: 'projects/details', children:[{path: ':key', component: ProjectDetailsComponent}] },
   {path: 'functionalities', component: FunctionalityListComponent},
     {path: 'functionalities/new', component: NewFunctionalityComponent},
     {path: 'functionalities/details', component: FunctionalityDetailsComponent},
@@ -28,6 +28,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  providers: [
+   // provideRouter(routes, withComponentInputBinding()),
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
