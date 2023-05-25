@@ -11,13 +11,9 @@ import {Project} from 'src/models/project.model';
 export class ProjectListComponent implements OnInit {
   constructor(private projectService: ProjectService, private router: Router) {}
   @Input() projects:Array<Project> = [];
-  @Input() projectsUndef:Array<Project> | undefined;
   ngOnInit(): void {    
 
-    this.projectsUndef = this.projectService.getProjects(); 
-    if (this.projectsUndef != undefined || this.projectsUndef === null) {
-      this.projects = this.projectsUndef;
-    }
+    this.projects = this.projectService.getProjects(); 
   }
 
   onDeleteProject(project: Project, index: number){

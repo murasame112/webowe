@@ -11,14 +11,10 @@ import { Project } from 'src/models/project.model';
 export class FunctionalityListComponent implements OnInit{
   constructor(private functionalityService: FunctionalityService, private projectService: ProjectService) {}
   @Input() functionalities:Array<Functionality> = [];
-  @Input() functionalitiesUndef:Array<Functionality> | undefined;
   @Input() projectNames: string[] = [];
   ngOnInit(): void {    
     
-    this.functionalitiesUndef = this.functionalityService.getFunctionalities(); 
-    if (this.functionalitiesUndef != undefined || this.functionalitiesUndef === null) {
-      this.functionalities = this.functionalitiesUndef;
-    }
+    this.functionalities = this.functionalityService.getFunctionalities(); 
 
     this.functionalities.forEach((element) =>{
         let prj = this.projectService.getProjectByKey(element.projectKey as string);

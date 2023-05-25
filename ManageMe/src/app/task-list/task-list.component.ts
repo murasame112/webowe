@@ -14,15 +14,12 @@ import { User } from 'src/models/user.model';
 export class TaskListComponent implements OnInit{
   constructor(private functionalityService: FunctionalityService, private taskService: TaskService, private userService: UserService) {}
   @Input() tasks:Array<Task> = [];
-  @Input() tasksUndef:Array<Task> | undefined;
   @Input() functionalityNames: string[] = [];
   @Input() ownerNames: string[] = [];
   ngOnInit(): void {    
     
-    this.tasksUndef = this.taskService.getTasks(); 
-    if (this.tasksUndef != undefined || this.tasksUndef === null) {
-      this.tasks = this.tasksUndef;
-    }
+    this.tasks = this.taskService.getTasks(); 
+
 
     this.tasks.forEach((element) =>{
         let fun = this.functionalityService.getFunctionalityByKey(element.functionalityKey as string);
