@@ -26,9 +26,6 @@ export class FunctionalityListComponent implements OnInit{
     });
     // TODO: dodac jakies sortowanie i filtrowanie
 
-    // dla kazdej funkcjonalnosci leci getProjectByKey
-    // do obiektu dodajemy wartosc projectName?
-    console.log(this.functionalities);
   }
 
   onDeleteFunctionality(functionality: Functionality, index: number){
@@ -36,7 +33,4 @@ export class FunctionalityListComponent implements OnInit{
     document.getElementById('tr'+index)?.remove();
   }
 
-  onDetailsFunctionality(functionality: Functionality){
-    
-  }
 }

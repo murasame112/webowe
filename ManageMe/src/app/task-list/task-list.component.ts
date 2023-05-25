@@ -35,10 +35,6 @@ export class TaskListComponent implements OnInit{
     });
     
     // TODO: dodac jakies sortowanie i filtrowanie
-
-    // dla kazdej funkcjonalnosci leci getProjectByKey
-    // do obiektu dodajemy wartosc projectName?
-    console.log(this.tasks);
   }
 
   onDeleteTask(task: Task, index: number){
@@ -46,7 +42,4 @@ export class TaskListComponent implements OnInit{
     document.getElementById('tr'+index)?.remove();
   }
 
-  onDetailsTask(task: Task){
-    
-  }
 }

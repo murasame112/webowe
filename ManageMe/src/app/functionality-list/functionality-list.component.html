@@ -12,7 +12,7 @@
           <td> {{projectNames[i]}}</td>
           <td>{{functionality.priority}}</td>
           <td>{{functionality.status}}</td>    
-          <td><button (click)="onDeleteFunctionality(functionality, i)">Delete</button><button (click)="onDetailsFunctionality(functionality)">Details</button></td>
+          <td><button (click)="onDeleteFunctionality(functionality, i)">Delete</button><button [routerLink]="['details', functionality.key]" routerLinkActive="router-link-active">Details</button></td>
     </tr>
     
 </table>

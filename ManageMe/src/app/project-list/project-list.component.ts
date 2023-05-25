@@ -25,7 +25,4 @@ export class ProjectListComponent implements OnInit {
     document.getElementById('tr'+index)?.remove();
   }
 
-  onDetailsProject(project: Project){
-    this.router.navigate(['projects/details', project.key])
-  }
 }

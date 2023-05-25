@@ -19,10 +19,10 @@ const routes: Routes = [
     {path: 'projects/details', children:[{path: ':key', component: ProjectDetailsComponent}] },
   {path: 'functionalities', component: FunctionalityListComponent},
     {path: 'functionalities/new', component: NewFunctionalityComponent},
-    {path: 'functionalities/details', component: FunctionalityDetailsComponent},
+    {path: 'functionalities/details', children:[{path: ':key', component: FunctionalityDetailsComponent}]},
   {path: 'tasks', component: TaskListComponent},
     {path: 'tasks/new', component: NewTaskComponent},
-    {path: 'tasks/details', component: TaskDetailsComponent},
+    {path: 'tasks/details', children:[{path: ':key', component: TaskDetailsComponent}]},
   {path: '**', component: PageNotFoundComponent}
 ];
 
