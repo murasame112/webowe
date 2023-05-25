@@ -12,9 +12,11 @@ export class FunctionalityListComponent implements OnInit{
   constructor(private functionalityService: FunctionalityService, private projectService: ProjectService) {}
   @Input() functionalities:Array<Functionality> = [];
   @Input() projectNames: string[] = [];
+  public activeProject!: Project;
   ngOnInit(): void {    
     
-    this.functionalities = this.functionalityService.getFunctionalities(); 
+    this.activeProject = this.projectService.getActiveProject();
+    this.functionalities = this.functionalityService.getFunctionalitiesForProject(this.activeProject.key as string); 
 
     this.functionalities.forEach((element) =>{
         let prj = this.projectService.getProjectByKey(element.projectKey as string);
