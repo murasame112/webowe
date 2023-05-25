@@ -19,6 +19,12 @@ export class ProjectDetailsComponent implements OnInit {
     this.prj = this.projectService.getProjectByKey(this.projectKey);
 
   }
+
+  onSetAsActive(project: Project){
+    this.projectService.setProjectAsActive(this.prj.key as string);
+
+    // TODO: jakies powiadomienie ze zmieniono lub cofac do summary
+  }
 }
 
      

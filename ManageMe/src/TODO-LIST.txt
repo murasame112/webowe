@@ -4,6 +4,7 @@ project.service.ts (i tak samo w functionalitiy i task i user)
 new-project.component.ts
 new-functionality.ocmponent.ts
 functionality-list.component.ts
+project-details.component.ts
 
 
 

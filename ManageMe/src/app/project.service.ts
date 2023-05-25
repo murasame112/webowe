@@ -54,7 +54,7 @@ export class ProjectService {
   getActiveProject(){
     const projects:Array<Project> = this.getProjects();
     let found:Project|undefined = projects.find(element => element.active == true);
-    return found;
+    return found as Project;
   }
 
   // returns project by key
@@ -122,6 +122,16 @@ export class ProjectService {
   // deletes project by given key
   deleteProject(key: string){
       localStorage.removeItem(key);
+  }
+
+  setProjectAsActive(key: string){
+    let oldActive = this.getActiveProject();
+    oldActive.active = false;
+    let project = this.getProjectByKey(key);
+    project.active = true;
+    this.saveProject(oldActive);
+    this.saveProject(project);
+    
   }
 
 
