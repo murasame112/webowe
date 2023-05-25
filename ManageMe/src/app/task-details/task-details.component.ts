@@ -6,6 +6,8 @@ import { FunctionalityService } from '../functionality.service';
 import { UserService } from '../user.service';
 import { Functionality } from 'src/models/functionality.model';
 import { User } from 'src/models/user.model';
+import { CommonModule } from '@angular/common';  
+import { BrowserModule } from '@angular/platform-browser';
 @Component({
   selector: 'app-task-details',
   templateUrl: './task-details.component.html',
@@ -26,5 +28,6 @@ export class TaskDetailsComponent implements OnInit {
     this.fun = this.functionalityService.getFunctionalityByKey(this.tsk.functionalityKey as string);
     this.own = this.userService.getUserByKey(this.tsk.ownerKey as string);
 
+    console.log(this.tsk.finish);
   }
 }
