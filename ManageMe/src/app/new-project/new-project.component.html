@@ -1,6 +1,8 @@
 <form [formGroup]="new_project">
-    <input formControlName="name" placeholder="name">
-    <input formControlName="description" placeholder="description">
+    <p>Project name: </p>
+    <input formControlName="name" placeholder="name"><br>
+    <p>Project description: </p>
+    <input formControlName="description" placeholder="description"><br>
 </form>
 <button (click)="onSave()">Save</button>
   

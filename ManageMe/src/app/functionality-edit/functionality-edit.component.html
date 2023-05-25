@@ -1,30 +1,32 @@
 <form [formGroup]="edit_functionality">
-    <input formControlName="name" placeholder="name" value="{{fun.name}}">
-    <input formControlName="description" placeholder="description" value="{{fun.description}}">
+    <p>Functionality name: </p>
+    <input formControlName="name" placeholder="name"><br>
+    <p>Functionality description: </p>
+    <input formControlName="description" placeholder="description"><br>
     <select formControlName="priority">
         <option value="" disabled>priority</option>
         <option *ngFor="let item of priorities; let i = index" [value]="item">
           {{ priorities[i] }}
         </option>
-    </select>
+    </select><br>
     <select formControlName="projectKey">
       <option value="" disabled>project</option>
       <option *ngFor="let item of projects; let i = index" [value]="item.key">
         {{ projects[i].name }}
       </option>
-    </select>
+    </select><br>
     <select formControlName="ownerKey">
       <option value="" disabled>owner</option>
       <option *ngFor="let item of users; let i = index" [value]="item.key">
         {{ users[i].name }} {{users[i].surname}}
       </option>
-    </select>
+    </select><br>
     <!-- <select formControlName="status">
         <option value="" disabled>status</option>
         <option *ngFor="let item of statuses let i = index" [value]="item">
           {{ statuses[i] }}
         </option>
-    </select> -->
+    </select><br> -->
 </form>
 <button (click)="onSave()">Save</button>
   

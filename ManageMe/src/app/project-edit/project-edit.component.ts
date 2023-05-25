@@ -22,8 +22,8 @@ export class ProjectEditComponent implements OnInit {
     this.projectKey = this.activatedRoute.snapshot.params['key'];
     this.prj = this.projectService.getProjectByKey(this.projectKey)
     this.edit_project = this.fb.nonNullable.group({
-      name: '',
-      description: '',
+      name: this.prj.name as string,
+      description: this.prj.description as string,
     });
   }
 

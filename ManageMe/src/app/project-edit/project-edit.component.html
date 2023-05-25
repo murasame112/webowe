@@ -1,6 +1,8 @@
 <form [formGroup]="edit_project">
-    <input formControlName="name" placeholder="name" value="{{prj.name}}">
-    <input formControlName="description" placeholder="description" value="{{prj.description}}">
+    <p>Project name: </p>
+    <input formControlName="name" placeholder="name"><br>
+    <p>Project description: </p>
+    <input formControlName="description" placeholder="description">
 </form>
 <button (click)="onSave()">Save</button>
   
