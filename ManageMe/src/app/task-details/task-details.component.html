@@ -4,6 +4,10 @@
 <p>Status: {{tsk.status}}</p>
 <p>Functionality: {{fun.name}} </p>
 <p>Owner: {{own.name}}</p>
+<p>Estimated execution time (in hours): {{tsk.exec_time}}</p>
+<p>Added: {{tsk.added}}</p>
+<p>Started: {{tsk.start}}</p>
+<p>Finished: {{tsk.finish}}</p>
 <hr>
 <button>Change status (selectbox?)</button>
 <button [routerLink]="['/tasks/edit', tsk.key]" routerLinkActive="router-link-active">Edit task</button>
