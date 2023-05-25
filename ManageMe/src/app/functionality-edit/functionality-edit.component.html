@@ -21,12 +21,12 @@
         {{ users[i].name }} {{users[i].surname}}
       </option>
     </select><br>
-    <!-- <select formControlName="status">
+    <select formControlName="status">
         <option value="" disabled>status</option>
         <option *ngFor="let item of statuses let i = index" [value]="item">
           {{ statuses[i] }}
         </option>
-    </select><br> -->
+    </select><br>
 </form>
 <button (click)="onSave()">Save</button>
   

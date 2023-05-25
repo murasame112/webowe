@@ -4,7 +4,7 @@ import { ProjectService } from 'src/app/project.service';
 import { Project } from 'src/models/project.model';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FunctionalityForm } from 'src/models/functionality-form.model';
+import { FunctionalityEditForm } from 'src/models/functionality-edit-form.model';
 import { Functionality } from 'src/models/functionality.model';
 import { priority } from 'src/enums/priority.enum';
 import { status } from 'src/enums/status.enum';
@@ -18,27 +18,34 @@ import { UserService } from '../user.service';
 })
 export class FunctionalityEditComponent implements OnInit {
   constructor(private projectService: ProjectService, private userService: UserService, private readonly fb: FormBuilder, private readonly activatedRoute: ActivatedRoute, private functionalityService: FunctionalityService ) {};
-  public edit_functionality!: FormGroup<FunctionalityForm>;
+  public edit_functionality!: FormGroup<FunctionalityEditForm>;
   public fun!: Functionality;
   protected functionalityKey!: string
   public priorities: string[] = [];
   public projects: Project[] = [];
+  public statuses: string[] = [];
   public users: User[] = [];
+  public currentProject: Project | undefined;
+  public currentOwner: User | undefined;
 
 
   ngOnInit(): void {
     this.functionalityKey = this.activatedRoute.snapshot.params['key'];
     this.fun = this.functionalityService.getFunctionalityByKey(this.functionalityKey);
+    this.currentProject = this.projectService.getProjectByKey(this.fun.projectKey as string);
+    this.currentOwner = this.userService.getUserByKey(this.fun.ownerKey as string);
     this.priorities = Object.values(priority);
+    this.statuses = Object.values(status);
     this.projects = this.projectService.getProjects();
     this.users = this.userService.getUsers();
     this.edit_functionality = this.fb.nonNullable.group({
 
-      name: '',
-      description: '',
-      priority: '',
-      projectKey: <Project>{},
-      ownerKey: <User>{},
+      name: this.fun.name as string,
+      description: this.fun.description as string,
+      priority: this.fun.priority as string,
+      projectKey: this.currentProject,
+      ownerKey: this.currentOwner,
+      status: this.fun.status as string,
     });
   }
 
