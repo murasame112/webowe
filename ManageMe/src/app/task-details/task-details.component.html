@@ -1,4 +1,11 @@
 <p>Name: {{tsk.name}}</p>
 <p>Description: {{tsk.description}}</p>
+<p>Priority: {{tsk.priority}}</p>
+<p>Status: {{tsk.status}}</p>
+<p>Functionality: {{fun.name}} </p>
+<p>Owner: {{own.name}}</p>
+<hr>
+<button>Change status (selectbox?)</button>
+<button [routerLink]="['/tasks/edit', tsk.key]" routerLinkActive="router-link-active">Edit task</button>
 <hr>
 <a routerLink="/" routerLinkActive="router-link-active">back</a>
