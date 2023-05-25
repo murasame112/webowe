@@ -139,7 +139,7 @@ export class TaskService {
     this.saveTask(t5);
     let t6 = this.createTask('Budowa fabryki', 'potrzebujemy wybudować fabrykę, by odblokować możliwość budowy portu gwiezdnego', 'high', 'f3', 8, 'done', 'u2', new Date('October 27, 2022'), new Date('November 9, 2022'), new Date('Nobember 10, 2022'));
     this.saveTask(t6);
-    let t7 = this.createTask('Budowa portu gwiezdnego z tech-labem', 'i tak tego nikt nie przeczyta', 'high', 'f3', 12, 'done', 'u2', new Date('October 27, 2022'), new Date('November 10, 2022'), new Date('Nobember 12, 2022'));
+    let t7 = this.createTask('Budowa portu gwiezdnego z tech-labem', 'i tak tego nikt nie przeczyta', 'high', 'f3', 12, 'done', 'u2', new Date('October 27, 2022'), new Date('November 10, 2022'), new Date('November 12, 2022'));
     this.saveTask(t7);
     let t8 = this.createTask('Produkcja banshee', 'należy wyprodukować co najmniej 2 myśliwce', 'medium', 'f4', 6, 'doing', 'u1', new Date('October 27, 2022'), new Date('November 13, 2022'), undefined);
     this.saveTask(t8);
@@ -155,6 +155,18 @@ export class TaskService {
   // deletes task by key
   deleteTask(key: string){
     localStorage.removeItem(key);
+  }
+
+  cleanDate(date: string | Date | undefined){
+    if(date !== undefined){
+      if(typeof date == 'string'){
+        date = new Date(date);
+      }
+      let newDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+      return newDate;
+    }else{
+      return undefined;
+    }
   }
 
   statusChanged(key: string, newStatus: string){

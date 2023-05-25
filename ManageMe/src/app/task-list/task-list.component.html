@@ -10,7 +10,7 @@
     <tr
           *ngFor="let task of tasks; let i = index" id="tr{{i}}">
           <td>{{task.name}}</td>
-          <td> {{functionalityNames[i]}}</td>
+          <td>{{functionalityNames[i]}}</td>
           <td>{{task.priority}}</td>
           <td>{{task.status}}</td>
           <td><button (click)="onDeleteTask(task, i)">Delete</button><button [routerLink]="['details', task.key]" routerLinkActive="router-link-active">Details</button></td>

@@ -5,10 +5,10 @@
 <p>Functionality: {{fun.name}} </p>
 <p>Owner: {{own.name}}</p>
 <p>Estimated execution time (in hours): {{tsk.exec_time}}</p>
-<p>Added: {{tsk.added}}</p>
-<p *ngIf="tsk.start !== undefined">Started: {{tsk.start}}</p>
+<p>Added: {{added}}</p>
+<p *ngIf="tsk.start !== undefined">Started: {{start}}</p>
     <p *ngIf="tsk.start == undefined">Started: not started</p>
-<p *ngIf="tsk.finish !== undefined">Finished: {{tsk.finish}}</p>
+<p *ngIf="tsk.finish !== undefined">Finished: {{finish}}</p>
     <p *ngIf="tsk.finish == undefined">Finished: not finished</p>
 <hr>
 <button>Change status (selectbox?)</button>

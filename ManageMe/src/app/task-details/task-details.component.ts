@@ -18,6 +18,9 @@ export class TaskDetailsComponent implements OnInit {
   public tsk!: Task;
   public fun!: Functionality;
   public own!: User;
+  public added!: string | undefined;
+  public start!: string | undefined;
+  public finish!: string | undefined;
   
   constructor(private readonly activatedRoute: ActivatedRoute, private taskService: TaskService, private functionalityService: FunctionalityService, private userService: UserService) {}
 
@@ -27,6 +30,10 @@ export class TaskDetailsComponent implements OnInit {
 
     this.fun = this.functionalityService.getFunctionalityByKey(this.tsk.functionalityKey as string);
     this.own = this.userService.getUserByKey(this.tsk.ownerKey as string);
+
+    this.added = this.taskService.cleanDate(this.tsk.added);
+    this.start = this.taskService.cleanDate(this.tsk.start);
+    this.finish = this.taskService.cleanDate(this.tsk.finish);
 
   }
 }
