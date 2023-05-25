@@ -1,4 +1,11 @@
 <p>Name: {{fun.name}}</p>
 <p>Description: {{fun.description}}</p>
+<p>Priority: {{fun.priority}}</p>
+<p>Status: {{fun.status}}</p>
+<p>Project: {{prj.name}} </p>
+<p>Owner: {{own.name}}</p>
+<hr>
+<button>Change status (selectbox?)</button>
+<button [routerLink]="['/functionalities/edit', fun.key]" routerLinkActive="router-link-active">Edit functionality</button>
 <hr>
 <a routerLink="/" routerLinkActive="router-link-active">back</a>

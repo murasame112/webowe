@@ -48,7 +48,7 @@ export class UserService {
 
 
   // returns user by key
-  getUsersByKey(key: string){
+  getUserByKey(key: string){
     const users:Array<User> = this.getUsers();
     let found:User|undefined = users.find(element => element.key == key);
     return found as User;

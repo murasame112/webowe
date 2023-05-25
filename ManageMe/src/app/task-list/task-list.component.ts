@@ -30,7 +30,7 @@ export class TaskListComponent implements OnInit{
     });
 
     this.tasks.forEach((element) =>{
-      let own = this.userService.getUsersByKey(element.ownerKey as string);
+      let own = this.userService.getUserByKey(element.ownerKey as string);
       this.ownerNames.push(own.name as string);
     });
     
