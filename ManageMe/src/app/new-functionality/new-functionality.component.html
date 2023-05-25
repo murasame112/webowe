@@ -16,7 +16,7 @@
     <select formControlName="ownerKey">
       <option value="" disabled>owner</option>
       <option *ngFor="let item of users; let i = index" [value]="item.key">
-        {{ users[i].name }}
+        {{ users[i].name }} {{users[i].surname}}
       </option>
     </select>
 </form>

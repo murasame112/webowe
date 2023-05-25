@@ -1,1 +1,33 @@
-<p>functionality-edit works!</p>
+<form [formGroup]="edit_functionality">
+    <input formControlName="name" placeholder="name" value="{{fun.name}}">
+    <input formControlName="description" placeholder="description" value="{{fun.description}}">
+    <select formControlName="priority">
+        <option value="" disabled>priority</option>
+        <option *ngFor="let item of priorities; let i = index" [value]="item">
+          {{ priorities[i] }}
+        </option>
+    </select>
+    <select formControlName="projectKey">
+      <option value="" disabled>project</option>
+      <option *ngFor="let item of projects; let i = index" [value]="item.key">
+        {{ projects[i].name }}
+      </option>
+    </select>
+    <select formControlName="ownerKey">
+      <option value="" disabled>owner</option>
+      <option *ngFor="let item of users; let i = index" [value]="item.key">
+        {{ users[i].name }} {{users[i].surname}}
+      </option>
+    </select>
+    <!-- <select formControlName="status">
+        <option value="" disabled>status</option>
+        <option *ngFor="let item of statuses let i = index" [value]="item">
+          {{ statuses[i] }}
+        </option>
+    </select> -->
+</form>
+<button (click)="onSave()">Save</button>
+  
+  
+<hr>
+<a routerLink="/" routerLinkActive="router-link-active">back</a>

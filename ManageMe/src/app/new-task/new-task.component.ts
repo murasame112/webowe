@@ -10,6 +10,7 @@ import { ProjectService } from 'src/app/project.service';
 import { TaskService } from 'src/app/task.service';
 import { priority } from 'src/enums/priority.enum';
 import { status } from 'src/enums/status.enum';
+import { UserService } from '../user.service';
 
 
 
@@ -19,7 +20,7 @@ import { status } from 'src/enums/status.enum';
   styleUrls: ['./new-task.component.scss']
 })
 export class NewTaskComponent {
-  constructor(private taskService: TaskService, private functionalityService: FunctionalityService, private projectService: ProjectService, private readonly fb: FormBuilder, ) {}
+  constructor(private taskService: TaskService, private functionalityService: FunctionalityService, private userService: UserService, private projectService: ProjectService, private readonly fb: FormBuilder, ) {}
   @Input() task: Task | undefined;
   new_task!: FormGroup<TaskForm>;
   public priorities: string[] = [];
@@ -38,7 +39,7 @@ export class NewTaskComponent {
     //console.log(Object.entries(priority)[0]);
     this.priorities = Object.values(priority);
     this.functionalities = this.functionalityService.getFunctionalities();
-    this.users = [u1, u2, u3]; // TODO: tu powinno pobierac userów, ale jeszcze nie ma od tego metody
+    this.users = this.userService.getUsers();
     //this.statuses = Object.keys(this.status).filter(x => isNaN(parseInt(x)));
     this.new_task = this.fb.nonNullable.group({
 

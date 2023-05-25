@@ -5,6 +5,7 @@ new-project.component.ts
 new-functionality.ocmponent.ts
 functionality-list.component.ts
 project-details.component.ts
+project-edit.component.ts (i tak samo w pozostalych editach)
 
 
 
