@@ -16,6 +16,9 @@ import { NewTaskComponent } from './new-task/new-task.component';
 import { FunctionalityDetailsComponent } from './functionality-details/functionality-details.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectEditComponent } from './project-edit/project-edit.component';
+import { TaskEditComponent } from './task-edit/task-edit.component';
+import { FunctionalityEditComponent } from './functionality-edit/functionality-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NewFunctionalityComponent,
     NewTaskComponent,
     FunctionalityDetailsComponent,
-    TaskDetailsComponent
+    TaskDetailsComponent,
+    ProjectEditComponent,
+    TaskEditComponent,
+    FunctionalityEditComponent
   ],
   imports: [
     BrowserModule,
