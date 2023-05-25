@@ -61,7 +61,7 @@ export class FunctionalityEditComponent implements OnInit {
       priority: editedFunctionalityValues.priority,
       projectKey: editedFunctionalityValues.projectKey as string,
       ownerKey: editedFunctionalityValues.ownerKey as string,
-      status: 'todo',
+      status: editedFunctionalityValues.status,
       
     }
 

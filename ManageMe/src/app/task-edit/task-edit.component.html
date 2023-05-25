@@ -1,1 +1,34 @@
-<p>task-edit works!</p>
+<form [formGroup]="edit_task">
+    <p>Task name: </p>
+    <input formControlName="name" placeholder="name"><br>
+    <p>Task description: </p>
+    <input formControlName="description" placeholder="description"><br>
+    <select formControlName="priority">
+        <option value="" disabled>priority</option>
+        <option *ngFor="let item of priorities; let i = index" [value]="item">
+          {{ priorities[i] }}
+        </option>
+    </select><br>
+    <select formControlName="functionalityKey">
+      <option value="" disabled>functionality</option>
+      <option *ngFor="let item of functionalities; let i = index" [value]="item.key">
+        {{ functionalities[i].name }}
+      </option>
+    </select><br>
+    <select formControlName="ownerKey">
+      <option value="" disabled>owner</option>
+      <option *ngFor="let item of users; let i = index" [value]="item.key">
+        {{ users[i].name }} {{users[i].surname}}
+      </option>
+    </select><br>
+    <select formControlName="status">
+        <option value="" disabled>status</option>
+        <option *ngFor="let item of statuses let i = index" [value]="item">
+          {{ statuses[i] }}
+        </option>
+    </select><br>
+    <input formControlName="exec_time" placeholder="estimated execution time" type="number"><br>
+</form>
+<button (click)="onSave()">Save</button>  
+<hr>
+<a routerLink="/" routerLinkActive="router-link-active">back</a>
