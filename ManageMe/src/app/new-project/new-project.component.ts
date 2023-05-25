@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, OnDestroy, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { ProjectService } from 'src/app/project.service';
 import { Project } from 'src/models/project.model';
 import { ProjectForm } from 'src/models/project-form.model';
-import { Subscription } from 'rxjs';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 

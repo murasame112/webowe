@@ -1,1 +1,9 @@
-<p>project-edit works!</p>
+<form [formGroup]="edit_project">
+    <input formControlName="name" placeholder="name" value="{{prj.name}}">
+    <input formControlName="description" placeholder="description" value="{{prj.description}}">
+</form>
+<button (click)="onSave()">Save</button>
+  
+  
+<hr>
+<a routerLink="/" routerLinkActive="router-link-active">back</a>
