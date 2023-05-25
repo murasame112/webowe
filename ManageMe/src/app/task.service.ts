@@ -127,12 +127,28 @@ export class TaskService {
 
   // creates few default tasks for testing
   createDefault(){
-    let t1 = this.createTask('task1', 't1 opis', 'high', 'f1', 6, 'todo', 'u1', new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'));
+    let t1 = this.createTask('Wybudowanie Spire', 'Spire to budowla wymagana do produkcji mutalisków', 'high', 'f1', 6, 'doing', 'u1', new Date('October 27, 2022'), new Date('November 9, 2022'), undefined);
     this.saveTask(t1);
-    let t2 = this.createTask('task2', 't2 opis','low', 'f2', 2, 'done', 'u2', new Date('November 9, 2000'), new Date('October 27, 2001'), new Date('January 1, 1999'));
+    let t2 = this.createTask('Produkcja mutalisków', 'trzeba ewoluować co najmniej 8 mutalisków','medium', 'f1', 4, 'todo', 'u1', new Date('October 27, 2022'), undefined, undefined);
     this.saveTask(t2);
-    let t3 = this.createTask('task3', 't3 opis', 'medium', 'f1', 4, 'doing', 'u3', new Date('November 9, 2000'), undefined, undefined);
+    let t3 = this.createTask('Transport mutalisków', 'mutaliski powinny znajodwać się niedaleko bazy przeciwnika', 'low', 'f2', 2, 'todo', 'u2', new Date('October 27, 2022'), undefined, undefined);
     this.saveTask(t3);
+    let t4 = this.createTask('Przeprowadzenie dywersji', 'po przygotowaniu mutalisków do akcji należy zaatakować inne miejsce małym oddziałem zerglingów, by przeciwnik skupił na tym ataku swoją uwagę', 'high', 'f2', 2, 'todo', 'u2', new Date('October 27, 2022'), undefined, undefined);
+    this.saveTask(t4);
+    let t5 = this.createTask('Atak mutaliskami', 'celem ataku są głównie SCV przeciwnika oraz tech-laby', 'high', 'f2', 4, 'todo', 'u2', new Date('October 27, 2022'), undefined, undefined);
+    this.saveTask(t5);
+    let t6 = this.createTask('Budowa fabryki', 'potrzebujemy wybudować fabrykę, by odblokować możliwość budowy portu gwiezdnego', 'high', 'f3', 8, 'done', 'u2', new Date('October 27, 2022'), new Date('November 9, 2022'), new Date('Nobember 10, 2022'));
+    this.saveTask(t6);
+    let t7 = this.createTask('Budowa portu gwiezdnego z tech-labem', 'i tak tego nikt nie przeczyta', 'high', 'f3', 12, 'done', 'u2', new Date('October 27, 2022'), new Date('November 10, 2022'), new Date('Nobember 12, 2022'));
+    this.saveTask(t7);
+    let t8 = this.createTask('Produkcja banshee', 'należy wyprodukować co najmniej 2 myśliwce', 'medium', 'f4', 6, 'doing', 'u1', new Date('October 27, 2022'), new Date('November 13, 2022'), undefined);
+    this.saveTask(t8);
+    let t9 = this.createTask('Opracowanie ulepszeń do banshee', 'ulepszenia do opracowania to Cloaking Field oraz Hyperflight Rotors', 'low', 'f4', 8, 'todo', 'u1', new Date('October 27, 2022'), undefined, undefined);
+    this.saveTask(t9);
+    let t10 = this.createTask('Przygotowanie tasków do funkcjonalności', '[DYSKUSJA] drużyna powinna przemyśleć odpowiednie taski dla tej funkcjonalności', 'medium', 'f5', 10, 'todo', 'u3', new Date('October 27, 2022'), undefined, undefined);
+    this.saveTask(t10);
+    let t11 = this.createTask('Przygotowanie tasków do funkcjonalności', '[DYSKUSJA] drużyna powinna przemyśleć odpowiednie taski dla tej funkcjonalności', 'medium', 'f6', 10, 'todo', 'u3', new Date('October 27, 2022'), undefined, undefined);
+    this.saveTask(t11);
 
   }
 

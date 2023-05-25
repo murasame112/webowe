@@ -108,14 +108,12 @@ export class ProjectService {
 
   // creates few default projects for testing
   createDefault(){
-    let p1 = this.createProject('pierwszy projekt', 'opis pierwszego projektu', false);
+    let p1 = this.createProject('Atak bazy terrana mutaliskami', 'Celem jest zaprowadzenie dywersji, by mutaliski mogły zaatakować czułe punkty bazy terrana', true);
     this.saveProject(p1);
-    let p2 = this.createProject('drugi projekt', 'opis drugiego projektu', true);
+    let p2 = this.createProject('Przygotowanie myśliwców banshee do operacji', 'Trzeba wyprodukować dwie banshee i zdobyć kluczowe ulepszenia', false);
     this.saveProject(p2);
-    let p3 = this.createProject('trzeci projekcik', 'opis3', false);
+    let p3 = this.createProject('Rozpoczęcie wydobycia w czwartej bazie', 'Zbudowanie i ufortyfikowanie czwartej bazy', false);
     this.saveProject(p3);
-    let p4 = this.createProject('newNewNewNewNew project', 'awangardowy opis czwartego projektu', false);
-    this.saveProject(p4);
 
   }
 

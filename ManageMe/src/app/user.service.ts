@@ -102,11 +102,11 @@ export class UserService {
 
   // creates few default projects for testing
   createDefault(){
-    let u1 = this.createUser('l1', 'p1', 'user 1','u1', 'developer');
+    let u1 = this.createUser('login_james', 'password_james', 'James', 'Raynor', 'developer');
     this.saveUser(u1);
-    let u2 = this.createUser('l2', 'p2', 'user 2', 'u2', 'developer');
+    let u2 = this.createUser('login_sarah', 'password_sarah', 'Sarah', 'Kerrigan', 'devops');
     this.saveUser(u2);
-    let u3 = this.createUser('l3', 'p3', 'user 3', 'u3', 'developer');
+    let u3 = this.createUser('login_nova', 'password_nova', 'November', 'Terra', 'admin');
     this.saveUser(u3);
 
 

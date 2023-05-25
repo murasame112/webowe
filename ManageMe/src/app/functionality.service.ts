@@ -122,16 +122,18 @@ export class FunctionalityService {
 
   // creates few default functionalities for testing
   createDefault(){
-    let f1 = this.createFunctionality('funkcjonalnosc 1', 'opis tejze funkcjonalnsoci', 'high', 'p1', 'u1', 'todo');
+    let f1 = this.createFunctionality('Przygotowanie mutalisków', 'należy przygotować wystarczającą ilość mutalisków by były gotowe do przeprowadzenia ataku', 'high', 'p1', 'u1', 'doing');
     this.saveFunctionality(f1);
-    let f2 = this.createFunctionality('funkcjonalnosc 2', 'opis tejze funkcjonalnsoci', 'low', 'p1', 'u1', 'todo');
+    let f2 = this.createFunctionality('Przeprowadzenie akcji', 'atak mutaliskami na bazę wroga', 'medium', 'p1', 'u2', 'todo');
     this.saveFunctionality(f2);
-    let f3 = this.createFunctionality('to do innego projektu', 'opis tejze 3funkcjonalnsoci', 'high', 'p2', 'u2', 'done');
+    let f3 = this.createFunctionality('Budowa infrastruktury', 'przygotowanie się do masowej produkcji myśliwców', 'medium', 'p2', 'u2', 'done');
     this.saveFunctionality(f3);
-    let f4 = this.createFunctionality('jakas funkcjonalnosc', 'nikt tego nie czyta', 'medium', 'p3', 'u1', 'doing');
+    let f4 = this.createFunctionality('Produkcja myśliwców banshee', 'produkcja banshee i ulepszeń do nich', 'high', 'p2', 'u1', 'doing');
     this.saveFunctionality(f4);
-    let f5 = this.createFunctionality('f5 f5 f5', 'f5 opis', 'medium', 'p4', 'u2', 'todo');
+    let f5 = this.createFunctionality('Budowa bazy', 'aspekt przyjmuje, że baza jest bezpieczna i nie należy martwić się atakiem', 'medium', 'p3', 'u3', 'todo');
     this.saveFunctionality(f5);
+    let f6 = this.createFunctionality('Fortyfikacja bazy', 'przygotowanie bazy do odpierania ataków', 'high', 'p3', 'u3', 'todo');
+    this.saveFunctionality(f6);
 
   }
 

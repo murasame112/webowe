@@ -28,6 +28,5 @@ export class TaskDetailsComponent implements OnInit {
     this.fun = this.functionalityService.getFunctionalityByKey(this.tsk.functionalityKey as string);
     this.own = this.userService.getUserByKey(this.tsk.ownerKey as string);
 
-    console.log(this.tsk.finish);
   }
 }
