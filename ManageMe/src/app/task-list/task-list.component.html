@@ -4,7 +4,6 @@
         <th>Functionality</th>
         <th>Priority</th>
         <th>Status</th>
-        <th>Owner</th>
         <th>Actions</th>
     </tr>
     <tr
@@ -13,7 +12,6 @@
           <td> {{functionalityNames[i]}}</td>
           <td>{{task.priority}}</td>
           <td>{{task.status}}</td>
-          <td>{{ownerNames[i]}}</td>
           <td><button (click)="onDeleteTask(task, i)">Delete</button><button [routerLink]="['details', task.key]" routerLinkActive="router-link-active">Details</button></td>
     </tr>
     

@@ -29,10 +29,11 @@ export class TaskListComponent implements OnInit{
         this.functionalityNames.push(fun.name as string);
     });
 
-    this.tasks.forEach((element) =>{
-      let own = this.userService.getUserByKey(element.ownerKey as string);
-      this.ownerNames.push(own.name as string);
-    });
+    // to ponizej usuniete, bo jednak nie ma sensu pokazywac na liscie ownera, ale zostawiam kod jakbym zmienil zdanie xd
+    // this.tasks.forEach((element) =>{
+    //   let own = this.userService.getUserByKey(element.ownerKey as string);
+    //   this.ownerNames.push(own.name as string);
+    // });
     
     // TODO: dodac jakies sortowanie i filtrowanie
   }
