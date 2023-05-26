@@ -79,6 +79,7 @@ export class TaskEditComponent implements OnInit {
     if(editedTask.status != this.tsk.status){
       let fun = this.taskService.statusChanged(editedTask.key as string, editedTask.status as string);
       this.functionalityService.saveFunctionality(fun);
+      editedTask = this.taskService.updateDates(editedTask.key as string, editedTask.status as string);
     }
 
     this.taskService.saveTask(editedTask);

@@ -148,4 +148,22 @@ export class TaskService {
 
   }
 
+  updateDates(key: string, newStatus: string){
+    let tsk = this.getTasksService.getTaskByKey(key);
+    switch(newStatus){
+      case 'doing':
+        tsk.start = new Date();
+      break;
+      case 'done':
+        tsk.finish = new Date();
+      break;
+      case 'todo':
+        tsk.start = undefined;
+        tsk.finish = undefined;
+      break;
+    }
+    return tsk;
+
+  }
+
 }
