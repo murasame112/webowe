@@ -34,4 +34,8 @@ export class FunctionalityDetailsComponent implements OnInit {
     this.own = this.userService.getUserByKey(this.fun.ownerKey as string);
 
   }
+
+  onForward(){
+    this.functionalityService.forwardStatus(this.fun);
+  }
 }

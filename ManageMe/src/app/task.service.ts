@@ -164,4 +164,21 @@ export class TaskService {
 
   }
 
+    // pushes status one state forward
+    forwardStatus(tsk: Task){
+      switch(tsk.status){
+        case 'todo':
+          tsk.status = 'doing';
+          break;
+        case 'doing':
+          tsk.status = 'done';
+          break;
+        default:
+          console.log('status not doing or done');
+          break;
+      }
+      tsk = this.updateDates(tsk);
+      this.saveTask(tsk);
+    }
+
 }

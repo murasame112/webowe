@@ -42,4 +42,8 @@ export class TaskDetailsComponent implements OnInit {
     this.finish = this.taskService.cleanDate(this.tsk.finish);
 
   }
+
+  onForward(){
+    this.taskService.forwardStatus(this.tsk);
+  }
 }

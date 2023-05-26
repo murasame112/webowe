@@ -119,6 +119,22 @@ export class FunctionalityService {
     return tasksToChange;
   }
 
+  // pushes status one state forward
+  forwardStatus(fun: Functionality){
+    switch(fun.status){
+      case 'todo':
+        fun.status = 'doing';
+        break;
+      case 'doing':
+        fun.status = 'done';
+        break;
+      default:
+        console.log('status not doing or done');
+        break;
+    }
+    this.saveFunctionality(fun);
+  }
+
 
 
 
