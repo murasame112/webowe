@@ -11,6 +11,7 @@ import { TaskService } from 'src/app/task.service';
 import { priority } from 'src/enums/priority.enum';
 import { status } from 'src/enums/status.enum';
 import { UserService } from '../user.service';
+import { GetFunctionalitiesService } from '../get-functionalities.service';
 
 
 
@@ -20,7 +21,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./new-task.component.scss']
 })
 export class NewTaskComponent {
-  constructor(private taskService: TaskService, private functionalityService: FunctionalityService, private userService: UserService, private projectService: ProjectService, private readonly fb: FormBuilder, ) {}
+  constructor(private getFunctionalitiesService: GetFunctionalitiesService, private taskService: TaskService, private functionalityService: FunctionalityService, private userService: UserService, private projectService: ProjectService, private readonly fb: FormBuilder, ) {}
   @Input() task: Task | undefined;
   new_task!: FormGroup<TaskForm>;
   public priorities: string[] = [];
@@ -38,7 +39,7 @@ export class NewTaskComponent {
     //this.priorities = Object.entries(this.priority)
     //console.log(Object.entries(priority)[0]);
     this.priorities = Object.values(priority);
-    this.functionalities = this.functionalityService.getFunctionalities();
+    this.functionalities = this.getFunctionalitiesService.getFunctionalities();
     this.users = this.userService.getUsers();
     //this.statuses = Object.keys(this.status).filter(x => isNaN(parseInt(x)));
     this.new_task = this.fb.nonNullable.group({

@@ -7,6 +7,8 @@ import { UserService } from '../user.service';
 import { User } from 'src/models/user.model';
 import { ProjectService } from '../project.service';
 import { Project } from 'src/models/project.model';
+import { GetTasksService } from '../get-tasks.service';
+import { GetFunctionalitiesService } from '../get-functionalities.service';
 
 @Component({
   selector: 'app-task-list',
@@ -14,7 +16,7 @@ import { Project } from 'src/models/project.model';
   styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent implements OnInit{
-  constructor(private functionalityService: FunctionalityService, private taskService: TaskService, private userService: UserService, private projectService: ProjectService) {}
+  constructor(private getFunctionalitiesService: GetFunctionalitiesService, private getTasksService: GetTasksService, private functionalityService: FunctionalityService, private taskService: TaskService, private userService: UserService, private projectService: ProjectService) {}
   @Input() tasks:Task[] = [];
   @Input() functionalityNames: string[] = [];
   @Input() ownerNames: string[] = [];
@@ -23,9 +25,9 @@ export class TaskListComponent implements OnInit{
   ngOnInit(): void {    
     
     this.activeProject = this.projectService.getActiveProject();
-    this.functionalities = this.functionalityService.getFunctionalitiesForProject(this.activeProject.key as string); 
+    this.functionalities = this.getFunctionalitiesService.getFunctionalitiesForProject(this.activeProject.key as string); 
     this.functionalities.forEach((element) => {
-      let funcTasks: Task[] = this.taskService.getTasksForFunctionality(element.key as string);
+      let funcTasks: Task[] = this.getTasksService.getTasksForFunctionality(element.key as string);
       let newTasks: Task[] = [];
       newTasks = this.tasks.concat(funcTasks);
       this.tasks = newTasks;
@@ -33,7 +35,7 @@ export class TaskListComponent implements OnInit{
 
 
     this.tasks.forEach((element) =>{
-        let fun = this.functionalityService.getFunctionalityByKey(element.functionalityKey as string);
+        let fun = this.getFunctionalitiesService.getFunctionalityByKey(element.functionalityKey as string);
         this.functionalityNames.push(fun.name as string);
     });
 

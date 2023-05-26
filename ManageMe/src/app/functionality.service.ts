@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { Functionality } from 'src/models/functionality.model';
 import { priority } from 'src/enums/priority.enum';
 import { status } from 'src/enums/status.enum';
-import { TaskService } from './task.service';
+import { GetTasksService } from './get-tasks.service';
+import { Task } from 'src/models/task.model';
+import { GetFunctionalitiesService } from './get-functionalities.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FunctionalityService {
 
-  constructor(private taskService: TaskService) { }
+  constructor(private getFunctionalitiesService: GetFunctionalitiesService, private getTasksService: GetTasksService) { }
 
   public saveFunctionality(functionality: Functionality) {
 
@@ -22,41 +24,7 @@ export class FunctionalityService {
     localStorage.setItem(key, functionalityJson);
   }
 
-  // returns array of all functionalities
-  getFunctionalities(){
-    if(localStorage.length == 0){
-      // TODO: przemyslec jak to rozwiazac inaczej niz return false
-        //return false;
-    }
-
-    const functionalities: Array<Functionality> = [];
-
-    let storage: any = {},
-        keys = Object.keys(localStorage),
-        i = keys.length;
-
-    while ( i-- ) {
-        storage[keys[i]] =  localStorage.getItem(keys[i]);
-    }
-    for (const [key, value] of Object.entries(storage)) {
-      if(key.startsWith('f')){
-        // TODO: wymyslic jak sie pozbyc ponizszego if'a
-        if(typeof value == 'string'){
-          const fun: Functionality = JSON.parse(value);
-          functionalities.push(fun);
-        }
-      }
-
-    }
-    return functionalities;
-  }
-
-  // returns functionality by key
-  getFunctionalityByKey(key: string){
-    const functionalities:Array<Functionality> = this.getFunctionalities();
-    let found:Functionality|undefined = functionalities.find(element => element.key == key);
-    return found as Functionality;
-  }
+  
 
 
   // creates functionality (just like constructor)
@@ -108,18 +76,6 @@ export class FunctionalityService {
 
   }
 
-  getFunctionalitiesForProject(projectKey: string){
-    let allFunctionalities = this.getFunctionalities();
-    let functionalities: Array<Functionality> = [];
-    allFunctionalities.forEach((element) => {
-      if(element.projectKey == projectKey){
-        functionalities.push(element);
-      }
-    })
-    return functionalities;
-  }
-
-
   // creates few default functionalities for testing
   createDefault(){
     let f1 = this.createFunctionality('Przygotowanie mutalisków', 'należy przygotować wystarczającą ilość mutalisków by były gotowe do przeprowadzenia ataku', 'high', 'p1', 'u1', 'doing');
@@ -144,17 +100,19 @@ export class FunctionalityService {
 
   // fires when satus of functionality gets changed - changes it's tasks to 'done' if functionality is 'done'
   statusChanged(key: string, newStatus: string){
-    let fun = this.getFunctionalityByKey(key);
+    let fun = this.getFunctionalitiesService.getFunctionalityByKey(key);
     fun.status = newStatus;
+    let tasksToChange: Task[] = [];
     if(fun.status == 'done'){
-      let tasks = this.taskService.getTasksForFunctionality(fun.key as string);
+      let tasks = this.getTasksService.getTasksForFunctionality(fun.key as string);
       tasks.forEach((element) => {
         if(element.status != 'done'){
           element.status = 'done';
-          this.taskService.saveTask(element);
+          tasksToChange.push(element);
         }
       })
     }
+    return tasksToChange;
   }
 
 

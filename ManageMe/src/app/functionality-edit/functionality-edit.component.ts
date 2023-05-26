@@ -11,13 +11,15 @@ import { status } from 'src/enums/status.enum';
 import { User } from 'src/models/user.model';
 import { FunctionalityService } from '../functionality.service';
 import { UserService } from '../user.service';
+import { TaskService } from '../task.service';
+import { GetFunctionalitiesService } from '../get-functionalities.service';
 @Component({
   selector: 'app-functionality-edit',
   templateUrl: './functionality-edit.component.html',
   styleUrls: ['./functionality-edit.component.scss']
 })
 export class FunctionalityEditComponent implements OnInit {
-  constructor(private projectService: ProjectService, private userService: UserService, private readonly fb: FormBuilder, private readonly activatedRoute: ActivatedRoute, private functionalityService: FunctionalityService ) {};
+  constructor(private getFunctionalitiesService: GetFunctionalitiesService, private taskService: TaskService, private projectService: ProjectService, private userService: UserService, private readonly fb: FormBuilder, private readonly activatedRoute: ActivatedRoute, private functionalityService: FunctionalityService ) {};
   public edit_functionality!: FormGroup<FunctionalityEditForm>;
   public fun!: Functionality;
   protected functionalityKey!: string
@@ -31,7 +33,7 @@ export class FunctionalityEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.functionalityKey = this.activatedRoute.snapshot.params['key'];
-    this.fun = this.functionalityService.getFunctionalityByKey(this.functionalityKey);
+    this.fun = this.getFunctionalitiesService.getFunctionalityByKey(this.functionalityKey);
     this.currentProject = this.projectService.getProjectByKey(this.fun.projectKey as string);
     this.currentOwner = this.userService.getUserByKey(this.fun.ownerKey as string);
     this.priorities = Object.values(priority);
@@ -67,7 +69,12 @@ export class FunctionalityEditComponent implements OnInit {
     }
 
     if(editedFunctionality.status != this.fun.status){
-      this.functionalityService.statusChanged(editedFunctionality.key as string, editedFunctionality.status as string);
+      let tasksToChange = this.functionalityService.statusChanged(editedFunctionality.key as string, editedFunctionality.status as string);
+      if(tasksToChange.length > 0){
+        tasksToChange.forEach(element => {
+          this.taskService.saveTask(element);
+        });
+      }
     }
 
     this.functionalityService.saveFunctionality(editedFunctionality);

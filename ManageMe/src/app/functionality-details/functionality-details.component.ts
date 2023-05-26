@@ -6,6 +6,7 @@ import { Project } from 'src/models/project.model';
 import { User } from 'src/models/user.model';
 import { ProjectService } from '../project.service';
 import { UserService } from '../user.service';
+import { GetFunctionalitiesService } from '../get-functionalities.service';
 @Component({
   selector: 'app-functionality-details',
   templateUrl: './functionality-details.component.html',
@@ -17,11 +18,11 @@ export class FunctionalityDetailsComponent implements OnInit {
   public prj!: Project;
   public own!: User;
   
-  constructor(private readonly activatedRoute: ActivatedRoute, private functionalityService: FunctionalityService, private projectService: ProjectService, private userService: UserService ) {}
+  constructor(private getFunctionalitiesService: GetFunctionalitiesService, private readonly activatedRoute: ActivatedRoute, private functionalityService: FunctionalityService, private projectService: ProjectService, private userService: UserService ) {}
 
   ngOnInit(): void {    
     this.functionalityKey = this.activatedRoute.snapshot.params['key'];
-    this.fun = this.functionalityService.getFunctionalityByKey(this.functionalityKey);
+    this.fun = this.getFunctionalitiesService.getFunctionalityByKey(this.functionalityKey);
 
     this.prj = this.projectService.getProjectByKey(this.fun.projectKey as string);
     this.own = this.userService.getUserByKey(this.fun.ownerKey as string);

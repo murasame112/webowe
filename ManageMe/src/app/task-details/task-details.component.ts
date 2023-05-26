@@ -8,6 +8,8 @@ import { Functionality } from 'src/models/functionality.model';
 import { User } from 'src/models/user.model';
 import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
+import { GetTasksService } from '../get-tasks.service';
+import { GetFunctionalitiesService } from '../get-functionalities.service';
 @Component({
   selector: 'app-task-details',
   templateUrl: './task-details.component.html',
@@ -22,13 +24,13 @@ export class TaskDetailsComponent implements OnInit {
   public start!: string | undefined;
   public finish!: string | undefined;
   
-  constructor(private readonly activatedRoute: ActivatedRoute, private taskService: TaskService, private functionalityService: FunctionalityService, private userService: UserService) {}
+  constructor(private getFunctionalitiesService: GetFunctionalitiesService, private getTasksService: GetTasksService, private readonly activatedRoute: ActivatedRoute, private taskService: TaskService, private functionalityService: FunctionalityService, private userService: UserService) {}
 
   ngOnInit(): void {    
     this.taskKey = this.activatedRoute.snapshot.params['key'];
-    this.tsk = this.taskService.getTaskByKey(this.taskKey);
+    this.tsk = this.getTasksService.getTaskByKey(this.taskKey);
 
-    this.fun = this.functionalityService.getFunctionalityByKey(this.tsk.functionalityKey as string);
+    this.fun = this.getFunctionalitiesService.getFunctionalityByKey(this.tsk.functionalityKey as string);
     this.own = this.userService.getUserByKey(this.tsk.ownerKey as string);
 
     this.added = this.taskService.cleanDate(this.tsk.added);
