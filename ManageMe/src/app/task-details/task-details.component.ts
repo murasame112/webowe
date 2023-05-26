@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { GetTasksService } from '../get-tasks.service';
 import { GetFunctionalitiesService } from '../get-functionalities.service';
+import { Project } from 'src/models/project.model';
+import { GetProjectsService } from '../get-projects.service';
 @Component({
   selector: 'app-task-details',
   templateUrl: './task-details.component.html',
@@ -19,18 +21,20 @@ export class TaskDetailsComponent implements OnInit {
   protected taskKey!: string
   public tsk!: Task;
   public fun!: Functionality;
+  public prj!: Project;
   public own!: User;
   public added!: string | undefined;
   public start!: string | undefined;
   public finish!: string | undefined;
   
-  constructor(private getFunctionalitiesService: GetFunctionalitiesService, private getTasksService: GetTasksService, private readonly activatedRoute: ActivatedRoute, private taskService: TaskService, private functionalityService: FunctionalityService, private userService: UserService) {}
+  constructor(private getProjectsService: GetProjectsService, private getFunctionalitiesService: GetFunctionalitiesService, private getTasksService: GetTasksService, private readonly activatedRoute: ActivatedRoute, private taskService: TaskService, private functionalityService: FunctionalityService, private userService: UserService) {}
 
   ngOnInit(): void {    
     this.taskKey = this.activatedRoute.snapshot.params['key'];
     this.tsk = this.getTasksService.getTaskByKey(this.taskKey);
 
     this.fun = this.getFunctionalitiesService.getFunctionalityByKey(this.tsk.functionalityKey as string);
+    this.prj = this.getProjectsService.getProjectByKey(this.fun.projectKey as string);
     this.own = this.userService.getUserByKey(this.tsk.ownerKey as string);
 
     this.added = this.taskService.cleanDate(this.tsk.added);
