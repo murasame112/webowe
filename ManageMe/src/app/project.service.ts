@@ -85,7 +85,7 @@ export class ProjectService {
     project.active = true;
     this.saveProject(oldActive);
     this.saveProject(project);
-    
+    return true;
   }
 
 

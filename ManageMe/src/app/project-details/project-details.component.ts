@@ -24,10 +24,12 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   onSetAsActive(project: Project){
-    this.projectService.setProjectAsActive(project.key as string);
-    
-
-    // TODO: jakies powiadomienie ze zmieniono lub cofac do summary
+    let res = this.projectService.setProjectAsActive(project.key as string);
+    if(res == true){
+      alert('Done.');
+      return true;
+    }
+    return false;
   }
 }
 

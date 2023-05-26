@@ -24,7 +24,6 @@ export class FunctionalityListComponent implements OnInit{
         let prj = this.getProjectsService.getProjectByKey(element.projectKey as string);
         this.projectNames.push(prj.name as string);
     });
-    // TODO: dodac jakies sortowanie i filtrowanie
 
   }
 

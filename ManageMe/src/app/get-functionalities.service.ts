@@ -42,14 +42,11 @@ export class GetFunctionalitiesService {
     return found as Functionality;
   }
 
+  // returns array of tasks assigned to functionality with param functionalityKey
   getTasksForFunctionality(functionalityKey: string){
     let allTasks = this.getTasksService.getTasks();
     let tasks: Array<Task> = [];
-    allTasks.forEach((element) => { //TODO: uzyc filter
-      if(element.functionalityKey == functionalityKey){
-        tasks.push(element);
-      }
-    })
+    tasks = allTasks.filter(element => element.functionalityKey == functionalityKey);
     return tasks;
   }
 }

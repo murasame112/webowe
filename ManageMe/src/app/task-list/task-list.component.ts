@@ -4,7 +4,6 @@ import { Functionality} from 'src/models/functionality.model';
 import { Task } from 'src/models/task.model';
 import { FunctionalityService } from '../functionality.service';
 import { UserService } from '../user.service';
-import { User } from 'src/models/user.model';
 import { ProjectService } from '../project.service';
 import { Project } from 'src/models/project.model';
 import { GetTasksService } from '../get-tasks.service';
@@ -40,13 +39,6 @@ export class TaskListComponent implements OnInit{
         this.functionalityNames.push(fun.name as string);
     });
 
-    // to ponizej usuniete, bo jednak nie ma sensu pokazywac na liscie ownera, ale zostawiam kod jakbym zmienil zdanie xd
-    // this.tasks.forEach((element) =>{
-    //   let own = this.userService.getUserByKey(element.ownerKey as string);
-    //   this.ownerNames.push(own.name as string);
-    // });
-    
-    // TODO: dodac jakies sortowanie i filtrowanie
   }
 
   onDeleteTask(task: Task, index: number){
