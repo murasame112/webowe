@@ -14,14 +14,13 @@ export class FunctionalityService {
   constructor(private getFunctionalitiesService: GetFunctionalitiesService, private getTasksService: GetTasksService) { }
 
   public saveFunctionality(functionality: Functionality) {
-
-    //TODO: jesli obiekt z tym samym key juz istnieje, to go usunac (ewentualnie sprawdzic czy setItem automatycznie nadpisuje)
     let key = 'undefined_key';
     if(typeof functionality.key == 'string'){
       key = functionality.key;
     }
     let functionalityJson = JSON.stringify(functionality);
     localStorage.setItem(key, functionalityJson);
+    return true;
   }
 
   

@@ -13,8 +13,7 @@ export class GetFunctionalitiesService {
   // returns array of all functionalities
   getFunctionalities(){
     if(localStorage.length == 0){
-      // TODO: przemyslec jak to rozwiazac inaczej niz return false
-        //return false;
+      return [];
     }
 
     const functionalities: Array<Functionality> = [];
@@ -28,11 +27,8 @@ export class GetFunctionalitiesService {
     }
     for (const [key, value] of Object.entries(storage)) {
       if(key.startsWith('f')){
-        // TODO: wymyslic jak sie pozbyc ponizszego if'a
-        if(typeof value == 'string'){
-          const fun: Functionality = JSON.parse(value);
-          functionalities.push(fun);
-        }
+        const fun: Functionality = JSON.parse(value as string);
+        functionalities.push(fun);
       }
 
     }

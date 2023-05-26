@@ -28,9 +28,12 @@ export class NewProjectComponent implements OnInit {
   onSave() {
     let prj = this.new_project.getRawValue();
     this.project = this.projectService.createProject(prj.name, prj.description, false);
-    this.projectService.saveProject(this.project);
-
-    // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów
+    let res = this.projectService.saveProject(this.project);
+    if(res == true){
+      alert('Done.');
+      return true;
+    }
+    return false;
   }
 
 }

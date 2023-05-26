@@ -81,9 +81,12 @@ export class TaskEditComponent implements OnInit {
       this.functionalityService.saveFunctionality(fun);
       editedTask = this.taskService.updateDates(editedTask);
     }
-    this.taskService.saveTask(editedTask);
-    return true;
-    // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów
+    let res = this.taskService.saveTask(editedTask);
+    if(res == true){
+      alert('Done.');
+      return true;
+    }
+    return false;
   }
 
 }

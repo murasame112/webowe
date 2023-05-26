@@ -8,7 +8,6 @@ export class UserService {
 
   constructor() { }
   public saveUser(user: User) {
-    //TODO: jesli obiekt z tym samym key juz istnieje, to go usunac (ewentualnie sprawdzic czy setItem automatycznie nadpisuje)
     let key = 'undefined_key';
     if(typeof user.key == 'string'){
       key = user.key;
@@ -20,8 +19,7 @@ export class UserService {
   // returns array of all users
   getUsers(){
     if(localStorage.length == 0){
-      // TODO: przemyslec jak to rozwiazac inaczej niz return false
-        //return false;
+      return [];
     }
 
     const users: Array<User> = [];
@@ -35,11 +33,8 @@ export class UserService {
     }
     for (const [key, value] of Object.entries(storage)) {
       if(key.startsWith('u')){
-        // TODO: wymyslic jak sie pozbyc ponizszego if'a
-        if(typeof value == 'string'){
-          const usr: User = JSON.parse(value);
-          users.push(usr);
-        }
+        const usr: User = JSON.parse(value as string);
+        users.push(usr);
       }
 
     }

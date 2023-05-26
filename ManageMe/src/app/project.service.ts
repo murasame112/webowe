@@ -9,17 +9,15 @@ export class ProjectService {
 
   constructor(private getProjectsService: GetProjectsService) { }
 
-  // TODO: Fajnie byłoby ugoólnić te serwisy chyba, żeby był jeden do obsługi tego - wtedy nie trzebaby robić funkcji saveProject, save Functionality, saveTask, save...
-
   // saves project to local storage
   public saveProject(project: Project) {
-    //TODO: jesli obiekt z tym samym key juz istnieje, to go usunac (ewentualnie sprawdzic czy setItem automatycznie nadpisuje)
     let key = 'undefined_key';
     if(typeof project.key == 'string'){
       key = project.key;
     }
     let projectJson = JSON.stringify(project);
     localStorage.setItem(key, projectJson);
+    return true;
   }
 
   // creates project (just like constructor)

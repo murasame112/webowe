@@ -37,9 +37,12 @@ export class ProjectEditComponent implements OnInit {
       active: false,
     }
 
-    this.projectService.saveProject(editedProject);
-
-    // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów
+    let res = this.projectService.saveProject(editedProject);
+    if(res == true){
+      alert('Done.');
+      return true;
+    }
+    return false;
   }
 
 }

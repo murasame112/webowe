@@ -62,9 +62,12 @@ export class NewTaskComponent {
       return false;
     }
     this.task = this.taskService.createTask(tsk.name, tsk.description, tsk.priority, tsk.functionalityKey as string, tsk.exec_time, 'todo', tsk.ownerKey as string, added );
-    this.taskService.saveTask(this.task);
-    // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów
-    return true;
+    let res = this.taskService.saveTask(this.task);
+    if(res == true){
+      alert('Done.');
+      return true;
+    }
+    return false;
   }
 }
 

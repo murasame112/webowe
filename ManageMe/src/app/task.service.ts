@@ -14,14 +14,13 @@ export class TaskService {
   constructor(private getFunctionalitiesService: GetFunctionalitiesService, private getTasksService: GetTasksService) { }
 
   public saveTask(task: Task) {
-    //TODO: jesli obiekt z tym samym key juz istnieje, to go usunac (ewentualnie sprawdzic czy setItem automatycznie nadpisuje)
-
     let key = 'undefined_key';
     if(typeof task.key == 'string'){
       key = task.key;
     }
     let taskJson = JSON.stringify(task);
     localStorage.setItem(key, taskJson);
+    return true;
   }
 
   // creates task (just like constructor)

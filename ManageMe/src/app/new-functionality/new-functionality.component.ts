@@ -53,9 +53,12 @@ export class NewFunctionalityComponent implements OnInit{
       return false;
     }
     this.functionality = this.functionalityService.createFunctionality(fun.name, fun.description, fun.priority, fun.projectKey as string, fun.ownerKey as string, 'todo');
-    this.functionalityService.saveFunctionality(this.functionality);
-    // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów
-    return true;
+    let res = this.functionalityService.saveFunctionality(this.functionality);
+    if(res == true){
+      alert('Done.');
+      return true;
+    }
+    return false;
   }
 }
 

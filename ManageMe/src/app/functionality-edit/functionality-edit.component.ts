@@ -78,9 +78,12 @@ export class FunctionalityEditComponent implements OnInit {
       }
     }
 
-    this.functionalityService.saveFunctionality(editedFunctionality);
-    return true;
-    // TODO: jakieś powiadomienie mówiące że zapisano, może też redirect na listę projektów
+    let res = this.functionalityService.saveFunctionality(editedFunctionality);
+    if(res == true){
+      alert('Done.');
+      return true;
+    }
+    return false;
   }
 
 }

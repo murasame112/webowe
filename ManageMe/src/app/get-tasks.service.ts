@@ -11,8 +11,7 @@ export class GetTasksService {
   // returns array of all tasks
   getTasks(){
     if(localStorage.length == 0){
-      // TODO: przemyslec jak to rozwiazac inaczej niz return false
-        //return false;
+      return[];
     }
 
     const tasks: Array<Task> = [];
@@ -26,11 +25,8 @@ export class GetTasksService {
     }
     for (const [key, value] of Object.entries(storage)) {
       if(key.startsWith('t')){
-        // TODO: wymyslic jak sie pozbyc ponizszego if'a
-        if(typeof value == 'string'){
-          const tsk: Task = JSON.parse(value);
-          tasks.push(tsk);
-        }
+        const tsk: Task = JSON.parse(value as string);
+        tasks.push(tsk);
       }
 
     }

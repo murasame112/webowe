@@ -13,8 +13,7 @@ export class GetProjectsService {
   // returns array of all projects
   getProjects(){
     if(localStorage.length == 0){
-      // TODO: przemyslec jak to rozwiazac inaczej niz return false
-        //return false;
+      return [];
     }
 
     const projects: Array<Project> = [];
@@ -27,12 +26,9 @@ export class GetProjectsService {
         storage[keys[i]] =  localStorage.getItem(keys[i]);
     }
     for (const [key, value] of Object.entries(storage)) {
-      if(key.startsWith('p')){
-        // TODO: wymyslic jak sie pozbyc ponizszego if'a
-        if(typeof value == 'string'){
-          const prj: Project = JSON.parse(value);
-          projects.push(prj);
-        }
+      if(key.startsWith('p')){ 
+        const prj: Project = JSON.parse(value as string);
+        projects.push(prj);
       }
 
     }
