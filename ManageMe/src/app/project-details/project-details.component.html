@@ -1,5 +1,6 @@
 <p>Name: {{prj.name}}</p>
 <p>Description: {{prj.description}}</p>
+<p>Number of functionalities: {{funcCount}}</p>
 <hr>
 <button (click)="onSetAsActive(prj)">Set as active</button>
 <button [routerLink]="['/projects/edit', prj.key]" routerLinkActive="router-link-active">Edit project</button>

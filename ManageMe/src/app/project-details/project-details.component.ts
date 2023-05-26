@@ -12,17 +12,20 @@ import { GetProjectsService } from '../get-projects.service';
 export class ProjectDetailsComponent implements OnInit {
   protected projectKey!: string
   public prj!: Project;
+  public funcCount!: number;
   
   constructor(private getProjectsService: GetProjectsService, private readonly activatedRoute: ActivatedRoute, private projectService: ProjectService ) {}
 
   ngOnInit(): void {    
     this.projectKey = this.activatedRoute.snapshot.params['key'];
     this.prj = this.getProjectsService.getProjectByKey(this.projectKey);
+    this.funcCount = this.getProjectsService.getFunctionalitiesForProject(this.prj.key as string).length;
 
   }
 
   onSetAsActive(project: Project){
     this.projectService.setProjectAsActive(project.key as string);
+    
 
     // TODO: jakies powiadomienie ze zmieniono lub cofac do summary
   }
