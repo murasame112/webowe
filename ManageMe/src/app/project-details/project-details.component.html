@@ -2,7 +2,7 @@
 <p>Description: {{prj.description}}</p>
 <p>Number of functionalities: {{funcCount}}</p>
 <br>
-<h3 style="text-decoration: underline;">Tasks:</h3><br>
+<h3 style="text-decoration: underline;">Functionalities:</h3><br>
 <p *ngFor="let item of funcList; let i = index">{{i+1}}. {{item.name}}</p>
 <hr>
 <button (click)="onSetAsActive(prj)">Set as active</button>
