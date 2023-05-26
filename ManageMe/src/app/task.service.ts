@@ -132,7 +132,7 @@ export class TaskService {
       fun.status = 'doing';
     }
     if(tsk.status == 'done'){
-      let otherTasks = this.getTasksService.getTasksForFunctionality(fun.key as string);
+      let otherTasks = this.getFunctionalitiesService.getTasksForFunctionality(fun.key as string);
       let counter = 0;
       otherTasks.forEach((element) => {
         if(element.status != 'done'){
@@ -146,20 +146,6 @@ export class TaskService {
 
     return fun;
 
-
-    // let fun = this.getFunctionalitiesService.getFunctionalityByKey(key);
-    // fun.status = newStatus;
-    // let tasksToChange: Task[] = [];
-    // if(fun.status == 'done'){
-    //   let tasks = this.getTasksService.getTasksForFunctionality(fun.key as string);
-    //   tasks.forEach((element) => {
-    //     if(element.status != 'done'){
-    //       element.status = 'done';
-    //       tasksToChange.push(element);
-    //     }
-    //   })
-    // }
-    // return tasksToChange;
   }
 
 }

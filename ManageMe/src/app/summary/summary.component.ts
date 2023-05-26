@@ -1,6 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { ProjectService } from 'src/app/project.service';
 import {Project} from 'src/models/project.model';
+import { GetProjectsService } from '../get-projects.service';
 
 @Component({
   selector: 'app-summary',
@@ -8,7 +9,7 @@ import {Project} from 'src/models/project.model';
   styleUrls: ['./summary.component.scss']
 })
 export class SummaryComponent implements OnInit {
-  constructor(private projectService: ProjectService) {}
+  constructor(private getProjectsService:GetProjectsService, private projectService: ProjectService) {}
   @Input() prj:Project|undefined = {
     key: undefined,
     name: undefined,
@@ -18,6 +19,6 @@ export class SummaryComponent implements OnInit {
 
 
   ngOnInit(): void {    
-    this.prj = this.projectService.getActiveProject();    
+    this.prj = this.getProjectsService.getActiveProject();    
   }
 }

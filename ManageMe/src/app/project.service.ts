@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {Project} from 'src/models/project.model';
+import { GetProjectsService } from './get-projects.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
 
-  constructor() { }
+  constructor(private getProjectsService: GetProjectsService) { }
 
   // TODO: Fajnie byłoby ugoólnić te serwisy chyba, żeby był jeden do obsługi tego - wtedy nie trzebaby robić funkcji saveProject, save Functionality, saveTask, save...
 
@@ -19,49 +20,6 @@ export class ProjectService {
     }
     let projectJson = JSON.stringify(project);
     localStorage.setItem(key, projectJson);
-  }
-
-  // returns array of all projects
-  getProjects(){
-    if(localStorage.length == 0){
-      // TODO: przemyslec jak to rozwiazac inaczej niz return false
-        //return false;
-    }
-
-    const projects: Array<Project> = [];
-
-    let storage: any = {},
-        keys = Object.keys(localStorage),
-        i = keys.length;
-
-    while ( i-- ) {
-        storage[keys[i]] =  localStorage.getItem(keys[i]);
-    }
-    for (const [key, value] of Object.entries(storage)) {
-      if(key.startsWith('p')){
-        // TODO: wymyslic jak sie pozbyc ponizszego if'a
-        if(typeof value == 'string'){
-          const prj: Project = JSON.parse(value);
-          projects.push(prj);
-        }
-      }
-
-    }
-    return projects;
-  }
-
-  // returns project marked as active
-  getActiveProject(){
-    const projects:Array<Project> = this.getProjects();
-    let found:Project|undefined = projects.find(element => element.active == true);
-    return found as Project;
-  }
-
-  // returns project by key
-  getProjectByKey(key: string){
-    const projects:Array<Project> = this.getProjects();
-    let found:Project|undefined = projects.find(element => element.key == key);
-    return found as Project;
   }
 
   // creates project (just like constructor)
@@ -123,9 +81,9 @@ export class ProjectService {
   }
 
   setProjectAsActive(key: string){
-    let oldActive = this.getActiveProject();
+    let oldActive = this.getProjectsService.getActiveProject();
     oldActive.active = false;
-    let project = this.getProjectByKey(key);
+    let project = this.getProjectsService.getProjectByKey(key);
     project.active = true;
     this.saveProject(oldActive);
     this.saveProject(project);

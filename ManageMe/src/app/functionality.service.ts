@@ -104,7 +104,7 @@ export class FunctionalityService {
     fun.status = newStatus;
     let tasksToChange: Task[] = [];
     if(fun.status == 'done'){
-      let tasks = this.getTasksService.getTasksForFunctionality(fun.key as string);
+      let tasks = this.getFunctionalitiesService.getTasksForFunctionality(fun.key as string);
       tasks.forEach((element) => {
         if(element.status != 'done'){
           element.status = 'done';

@@ -8,6 +8,7 @@ import { priority } from 'src/enums/priority.enum';
 import { FunctionalityService } from 'src/app/functionality.service';
 import { ProjectService } from 'src/app/project.service';
 import { UserService } from '../user.service';
+import { GetProjectsService } from '../get-projects.service';
 
 
 
@@ -17,7 +18,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./new-functionality.component.scss']
 })
 export class NewFunctionalityComponent implements OnInit{
-  constructor(private functionalityService: FunctionalityService, private userService: UserService, private readonly fb: FormBuilder, private projectService: ProjectService) {}
+  constructor(private getProjectsService: GetProjectsService, private functionalityService: FunctionalityService, private userService: UserService, private readonly fb: FormBuilder, private projectService: ProjectService) {}
   @Input() functionality: Functionality | undefined;
   new_functionality!: FormGroup<FunctionalityForm>;
   public priorities: string[] = [];
@@ -33,7 +34,7 @@ export class NewFunctionalityComponent implements OnInit{
     //this.priorities = Object.entries(this.priority)
     //console.log(Object.entries(priority)[0]);
     this.priorities = Object.values(priority);
-    this.projects = this.projectService.getProjects();
+    this.projects = this.getProjectsService.getProjects();
     this.users = this.userService.getUsers();
     //this.statuses = Object.keys(this.status).filter(x => isNaN(parseInt(x)));
     this.new_functionality = this.fb.nonNullable.group({

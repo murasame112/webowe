@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Functionality } from 'src/models/functionality.model';
+import { Task } from 'src/models/task.model';
+import { GetTasksService } from './get-tasks.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetFunctionalitiesService {
 
-  constructor() { }
+  constructor(private getTasksService: GetTasksService) { }
 
   // returns array of all functionalities
   getFunctionalities(){
@@ -44,14 +46,14 @@ export class GetFunctionalitiesService {
     return found as Functionality;
   }
 
-  getFunctionalitiesForProject(projectKey: string){
-    let allFunctionalities = this.getFunctionalities();
-    let functionalities: Array<Functionality> = [];
-    allFunctionalities.forEach((element) => {
-      if(element.projectKey == projectKey){
-        functionalities.push(element);
+  getTasksForFunctionality(functionalityKey: string){
+    let allTasks = this.getTasksService.getTasks();
+    let tasks: Array<Task> = [];
+    allTasks.forEach((element) => { //TODO: uzyc filter
+      if(element.functionalityKey == functionalityKey){
+        tasks.push(element);
       }
     })
-    return functionalities;
+    return tasks;
   }
 }

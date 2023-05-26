@@ -2,6 +2,7 @@ import { Component, OnInit, Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/project.service';
 import {Project} from 'src/models/project.model';
+import { GetProjectsService } from '../get-projects.service';
 
 @Component({
   selector: 'app-project-list',
@@ -9,11 +10,11 @@ import {Project} from 'src/models/project.model';
   styleUrls: ['./project-list.component.scss']
 })
 export class ProjectListComponent implements OnInit {
-  constructor(private projectService: ProjectService, private router: Router) {}
+  constructor(private getProjectsService: GetProjectsService, private projectService: ProjectService, private router: Router) {}
   @Input() projects:Array<Project> = [];
   ngOnInit(): void {    
 
-    this.projects = this.projectService.getProjects(); 
+    this.projects = this.getProjectsService.getProjects(); 
   }
 
   onDeleteProject(project: Project, index: number){

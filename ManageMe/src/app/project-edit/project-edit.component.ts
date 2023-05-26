@@ -5,6 +5,7 @@ import { Project } from 'src/models/project.model';
 import { ProjectForm } from 'src/models/project-form.model';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GetProjectsService } from '../get-projects.service';
 
 @Component({
   selector: 'app-project-edit',
@@ -12,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./project-edit.component.scss']
 })
 export class ProjectEditComponent implements OnInit {
-  constructor(private projectService: ProjectService, private readonly fb: FormBuilder, private readonly activatedRoute: ActivatedRoute ) {};
+  constructor(private getProjectsService: GetProjectsService, private projectService: ProjectService, private readonly fb: FormBuilder, private readonly activatedRoute: ActivatedRoute ) {};
   public edit_project!: FormGroup<ProjectForm>;
   public prj!: Project;
   protected projectKey!: string
@@ -20,7 +21,7 @@ export class ProjectEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectKey = this.activatedRoute.snapshot.params['key'];
-    this.prj = this.projectService.getProjectByKey(this.projectKey)
+    this.prj = this.getProjectsService.getProjectByKey(this.projectKey)
     this.edit_project = this.fb.nonNullable.group({
       name: this.prj.name as string,
       description: this.prj.description as string,

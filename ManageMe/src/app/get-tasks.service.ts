@@ -37,17 +37,6 @@ export class GetTasksService {
     return tasks;
   }
 
-  getTasksForFunctionality(functionalityKey: string){
-    let allTasks = this.getTasks();
-    let tasks: Array<Task> = [];
-    allTasks.forEach((element) => { //TODO: uzyc filter
-      if(element.functionalityKey == functionalityKey){
-        tasks.push(element);
-      }
-    })
-    return tasks;
-  }
-
   // returns task by key
   getTaskByKey(key: string){
     const tasks:Array<Task> = this.getTasks();

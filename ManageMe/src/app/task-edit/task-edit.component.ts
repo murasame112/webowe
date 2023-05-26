@@ -15,13 +15,14 @@ import { Task } from 'src/models/task.model';
 import { TaskService } from '../task.service';
 import { GetTasksService } from '../get-tasks.service';
 import { GetFunctionalitiesService } from '../get-functionalities.service';
+import { GetProjectsService } from '../get-projects.service';
 @Component({
   selector: 'app-task-edit',
   templateUrl: './task-edit.component.html',
   styleUrls: ['./task-edit.component.scss']
 })
 export class TaskEditComponent implements OnInit {
-  constructor(private getFunctionalitiesService: GetFunctionalitiesService, private getTasksService: GetTasksService ,private projectService: ProjectService, private taskService: TaskService, private userService: UserService, private readonly fb: FormBuilder, private readonly activatedRoute: ActivatedRoute, private functionalityService: FunctionalityService ) {};
+  constructor(private getProjectsService: GetProjectsService, private getFunctionalitiesService: GetFunctionalitiesService, private getTasksService: GetTasksService ,private projectService: ProjectService, private taskService: TaskService, private userService: UserService, private readonly fb: FormBuilder, private readonly activatedRoute: ActivatedRoute, private functionalityService: FunctionalityService ) {};
   public edit_task!: FormGroup<TaskEditForm>;
   public tsk!: Task;
   protected taskKey!: string
@@ -36,12 +37,12 @@ export class TaskEditComponent implements OnInit {
   ngOnInit(): void {
     this.taskKey = this.activatedRoute.snapshot.params['key'];
     this.tsk = this.getTasksService.getTaskByKey(this.taskKey);
-    let activeProject = this.projectService.getActiveProject();
+    let activeProject = this.getProjectsService.getActiveProject();
     this.currentFunctionality = this.getFunctionalitiesService.getFunctionalityByKey(this.tsk.functionalityKey as string);
     this.currentOwner = this.userService.getUserByKey(this.tsk.ownerKey as string);
     this.priorities = Object.values(priority);
     this.statuses = Object.values(status);
-    this.functionalities = this.getFunctionalitiesService.getFunctionalitiesForProject(activeProject.key as string);
+    this.functionalities = this.getProjectsService.getFunctionalitiesForProject(activeProject.key as string);
     this.users = this.userService.getUsers();
     this.edit_task = this.fb.nonNullable.group({
 
