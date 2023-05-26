@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import {Project} from 'src/models/project.model';
 import { GetProjectsService } from './get-projects.service';
+import { FunctionalityService } from './functionality.service';
+import { Functionality } from 'src/models/functionality.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
 
-  constructor(private getProjectsService: GetProjectsService) { }
+  constructor(private getProjectsService: GetProjectsService, private functionalityService: FunctionalityService) { }
 
   // saves project to local storage
   public saveProject(project: Project) {
@@ -75,7 +77,11 @@ export class ProjectService {
 
   // deletes project by given key
   deleteProject(key: string){
-      localStorage.removeItem(key);
+    let funcionalities = this.getProjectsService.getFunctionalitiesForProject(key);
+    funcionalities.forEach(element => {
+      this.functionalityService.deleteFunctionality(element.key as string);
+    })
+    localStorage.removeItem(key);
   }
 
   setProjectAsActive(key: string){

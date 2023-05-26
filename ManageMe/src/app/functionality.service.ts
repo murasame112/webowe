@@ -5,13 +5,14 @@ import { status } from 'src/enums/status.enum';
 import { GetTasksService } from './get-tasks.service';
 import { Task } from 'src/models/task.model';
 import { GetFunctionalitiesService } from './get-functionalities.service';
+import { TaskService } from './task.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FunctionalityService {
 
-  constructor(private getFunctionalitiesService: GetFunctionalitiesService, private getTasksService: GetTasksService) { }
+  constructor(private taskService: TaskService, private getFunctionalitiesService: GetFunctionalitiesService, private getTasksService: GetTasksService) { }
 
   public saveFunctionality(functionality: Functionality) {
     let key = 'undefined_key';
@@ -94,6 +95,10 @@ export class FunctionalityService {
 
   // deletes functionality
   deleteFunctionality(key: string){
+    let tasks = this.getFunctionalitiesService.getTasksForFunctionality(key);
+    tasks.forEach(element => {
+      this.taskService.deleteTask(element.key as string);
+    })
     localStorage.removeItem(key);
   }
 
