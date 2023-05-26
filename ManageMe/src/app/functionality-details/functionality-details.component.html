@@ -5,8 +5,11 @@
 <p>Project: {{prj.name}} </p>
 <p>Owner: {{own.name}}</p>
 <p>Number of tasks: {{taskCount}}</p>
+<br>
+<h3 style="text-decoration: underline;">Tasks:</h3><br>
+<p *ngFor="let item of taskList; let i = index">{{i+1}}. {{item.name}}</p>
 <hr>
-<button>Change status (selectbox?)</button>
+
 <button [routerLink]="['/functionalities/edit', fun.key]" routerLinkActive="router-link-active">Edit functionality</button>
 <hr>
 <a routerLink="/" routerLinkActive="router-link-active">back</a>

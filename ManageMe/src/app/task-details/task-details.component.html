@@ -12,7 +12,6 @@
 <p *ngIf="tsk.finish !== undefined">Finished: {{finish}}</p>
     <p *ngIf="tsk.finish == undefined">Finished: not finished</p>
 <hr>
-<button>Change status (selectbox?)</button>
 <button [routerLink]="['/tasks/edit', tsk.key]" routerLinkActive="router-link-active">Edit task</button>
 <hr>
 <a routerLink="/" routerLinkActive="router-link-active">back</a>

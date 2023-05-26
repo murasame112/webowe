@@ -8,6 +8,7 @@ import { ProjectService } from '../project.service';
 import { UserService } from '../user.service';
 import { GetFunctionalitiesService } from '../get-functionalities.service';
 import { GetProjectsService } from '../get-projects.service';
+import { Task } from 'src/models/task.model';
 @Component({
   selector: 'app-functionality-details',
   templateUrl: './functionality-details.component.html',
@@ -19,13 +20,15 @@ export class FunctionalityDetailsComponent implements OnInit {
   public prj!: Project;
   public own!: User;
   public taskCount!: number;
+  public taskList!: Task[];
   
   constructor(private getProjectsService: GetProjectsService, private getFunctionalitiesService: GetFunctionalitiesService, private readonly activatedRoute: ActivatedRoute, private functionalityService: FunctionalityService, private projectService: ProjectService, private userService: UserService ) {}
 
   ngOnInit(): void {    
     this.functionalityKey = this.activatedRoute.snapshot.params['key'];
     this.fun = this.getFunctionalitiesService.getFunctionalityByKey(this.functionalityKey);
-    this.taskCount = this.getFunctionalitiesService.getTasksForFunctionality(this.functionalityKey).length;
+    this.taskList = this.getFunctionalitiesService.getTasksForFunctionality(this.functionalityKey);
+    this.taskCount = this.taskList.length;
 
     this.prj = this.getProjectsService.getProjectByKey(this.fun.projectKey as string);
     this.own = this.userService.getUserByKey(this.fun.ownerKey as string);
