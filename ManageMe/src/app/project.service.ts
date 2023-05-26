@@ -81,6 +81,9 @@ export class ProjectService {
     funcionalities.forEach(element => {
       this.functionalityService.deleteFunctionality(element.key as string);
     })
+    if(this.getProjectsService.getActiveProject().key == key){
+      this.setProjectAsActive(this.getProjectsService.getProjects()[0].key as string);
+    }
     localStorage.removeItem(key);
   }
 
