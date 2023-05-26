@@ -55,6 +55,7 @@ export class FunctionalityEditComponent implements OnInit {
     if(typeof editedFunctionalityValues.projectKey != 'string' || typeof editedFunctionalityValues.ownerKey != 'string'){
       return false;
     }
+
     let editedFunctionality: Functionality = {
       key: this.functionalityKey,
       name: editedFunctionalityValues.name,
@@ -64,6 +65,10 @@ export class FunctionalityEditComponent implements OnInit {
       ownerKey: editedFunctionalityValues.ownerKey as string,
       status: editedFunctionalityValues.status,
       
+    }
+
+    if(editedFunctionality.status != this.fun.status){
+      this.functionalityService.statusChanged(editedFunctionality.key as string, editedFunctionality.status as string);
     }
 
     this.functionalityService.saveFunctionality(editedFunctionality);
