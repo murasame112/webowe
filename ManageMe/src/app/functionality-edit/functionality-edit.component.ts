@@ -50,7 +50,6 @@ export class FunctionalityEditComponent implements OnInit {
   }
 
   onSave() {
-    // TODO: dodac reagowanie na zmiane statusu
     let editedFunctionalityValues = this.edit_functionality.getRawValue();
     if(typeof editedFunctionalityValues.projectKey != 'string' || typeof editedFunctionalityValues.ownerKey != 'string'){
       return false;

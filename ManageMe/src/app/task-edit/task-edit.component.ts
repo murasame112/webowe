@@ -54,7 +54,6 @@ export class TaskEditComponent implements OnInit {
   }
 
   onSave() {
-    // TODO: dodac reagowanie na zmiane statusu
     let editedTaskValues = this.edit_task.getRawValue();
     if(typeof editedTaskValues.functionalityKey != 'string' || typeof editedTaskValues.ownerKey != 'string'){
       return false;
@@ -72,6 +71,10 @@ export class TaskEditComponent implements OnInit {
       start: this.tsk.start,
       finish: this.tsk.finish,
       
+    }
+
+    if(editedTask.status != this.tsk.status){
+      this.taskService.statusChanged(editedTask.key as string, editedTask.status as string);
     }
 
     this.taskService.saveTask(editedTask);

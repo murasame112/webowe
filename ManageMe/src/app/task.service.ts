@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Task } from 'src/models/task.model';
 import { status } from 'src/enums/status.enum';
 import { priority } from 'src/enums/priority.enum';
+//import { FunctionalityService } from './functionality.service';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ import { priority } from 'src/enums/priority.enum';
 })
 export class TaskService {
 
-  constructor() { }
+  constructor(/*private functionalityService: FunctionalityService*/) { }
 
   public saveTask(task: Task) {
     //TODO: jesli obiekt z tym samym key juz istnieje, to go usunac (ewentualnie sprawdzic czy setItem automatycznie nadpisuje)
@@ -170,27 +171,26 @@ export class TaskService {
   }
 
   statusChanged(key: string, newStatus: string){
-    let tsk = this.getTaskByKey(key);
-    tsk.status = newStatus;
-    // get func for task
-    // let fun =
-    if(tsk.status == 'doing'){
-      /*
-      if(fun.status == 'todo'){
-        fun.status = 'doing';
-      }
-      */
-    }
-    if(tsk.status == 'done'){
-      // get all tasks for func
-      // foreach
-      // if element.status != 'done'
-        // counter++
+    // let tsk = this.getTaskByKey(key);
+    // tsk.status = newStatus;
+    // let fun = this.functionalityService.getFunctionalityByKey(tsk.functionalityKey as string);
+    // if(tsk.status == 'doing' && fun.status == 'todo'){
+    //   fun.status = 'doing';
+    // }
+    // if(tsk.status == 'done'){
+    //   let otherTasks = this.getTasksForFunctionality(fun.key as string);
+    //   let counter = 0;
+    //   otherTasks.forEach((element) => {
+    //     if(element.status != 'done'){
+    //       counter++;
+    //     }
+    //   });
+    //   if(counter == 0){
+    //     fun.status = 'done';
+    //   }
+    // }
 
-      // if counter == 0
-      // fun.status = 'done'
-    }
+    // this.functionalityService.saveFunctionality(fun);
   }
 
-  //TODO: zmiana statusu funkcjonalnosci, jesli task jest doing a ona todo
 }

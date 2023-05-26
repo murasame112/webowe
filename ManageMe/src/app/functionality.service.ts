@@ -142,6 +142,7 @@ export class FunctionalityService {
     localStorage.removeItem(key);
   }
 
+  // fires when satus of functionality gets changed - changes it's tasks to 'done' if functionality is 'done'
   statusChanged(key: string, newStatus: string){
     let fun = this.getFunctionalityByKey(key);
     fun.status = newStatus;
