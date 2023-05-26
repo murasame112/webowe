@@ -18,12 +18,14 @@ export class FunctionalityDetailsComponent implements OnInit {
   public fun!: Functionality;
   public prj!: Project;
   public own!: User;
+  public taskCount!: number;
   
   constructor(private getProjectsService: GetProjectsService, private getFunctionalitiesService: GetFunctionalitiesService, private readonly activatedRoute: ActivatedRoute, private functionalityService: FunctionalityService, private projectService: ProjectService, private userService: UserService ) {}
 
   ngOnInit(): void {    
     this.functionalityKey = this.activatedRoute.snapshot.params['key'];
     this.fun = this.getFunctionalitiesService.getFunctionalityByKey(this.functionalityKey);
+    this.taskCount = this.getFunctionalitiesService.getTasksForFunctionality(this.functionalityKey).length;
 
     this.prj = this.getProjectsService.getProjectByKey(this.fun.projectKey as string);
     this.own = this.userService.getUserByKey(this.fun.ownerKey as string);
