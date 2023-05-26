@@ -148,9 +148,8 @@ export class TaskService {
 
   }
 
-  updateDates(key: string, newStatus: string){
-    let tsk = this.getTasksService.getTaskByKey(key);
-    switch(newStatus){
+  updateDates(tsk: Task){
+    switch(tsk.status){
       case 'doing':
         tsk.start = new Date();
       break;
